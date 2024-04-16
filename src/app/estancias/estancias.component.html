@@ -1,1 +1,22 @@
-<p>estancias works!</p>
+<body>
+    <div id="principal">
+        <h1>Lista de estancias</h1>
+        <div class="card-group row row-cols-1 row-cols-md-4 g-4">
+          @for (item of array; track item) {
+            <div class="col">
+              <div class="card h-100">
+                <img [src]="item.imagen" class="img-fluid" style="width: 50%; height: 50%;" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.nombre}}</h5>
+                  <h5 class="card-title">{{item.propietario}}</h5>
+                  <h5 class="card-title">{{item.telefono}}</h5>
+                  <h5 class="card-title">{{item.email}}</h5>
+                  <h5 class="card-title">${{item.precio}}.00</h5>
+                  <h5 class="card-title">{{item.direccion}}</h5>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+</body>

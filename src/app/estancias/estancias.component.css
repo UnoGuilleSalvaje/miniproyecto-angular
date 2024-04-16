@@ -1,0 +1,88 @@
+/* Estilos generales */
+body {
+    background-color: #171717;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    padding: 50px;
+    padding-left: 150px;
+  }
+  
+  /* Estilos para el contenedor principal */
+  #principal {
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  /* Estilos para el título */
+  #principal h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #d4d4d4;
+  }
+  
+  /* Estilos para las tarjetas */
+  .card {
+    background-color: #1f1f1f;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .card-text {
+    color: #636363;
+  }
+  
+  /* Estilos para el botón */
+  .btn {
+    background-color: #565656;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #636363;
+    transform: translateY(-2px);
+  }
+  
+  .btn:active {
+    background-color: #171717;
+    transform: translateY(2px);
+  }
+
+  img {
+    /*Alinear imagen en el centro */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+  }
+  
