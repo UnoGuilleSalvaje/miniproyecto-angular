@@ -1,14 +1,4 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "hello"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
-  "estancias": {
     "estancias": [
         {
             "id": 1,
@@ -111,5 +101,4 @@
             "imagen": "https://www.tahitilegends.com/images1/gallery/Huvafen-Fushi-Maldives-Ocean-Pool-Bungalow-2000x1200_33213.jpg"
         }
     ]
-}
 }
