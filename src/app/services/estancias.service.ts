@@ -7,7 +7,8 @@ import { take } from 'rxjs';
 })
 export class EstanciasService {
 
-  urlAPI:string = "https://estancias.free.beeceptor.com/";
+  urlAPI:string = "https://my-json-server.typicode.com/UnoGuilleSalvaje/miniproyecto-angular/db";
+  // urlAPI:string = "https://estancias.free.beeceptor.com/";
 
   constructor(private http: HttpClient) { }
 
