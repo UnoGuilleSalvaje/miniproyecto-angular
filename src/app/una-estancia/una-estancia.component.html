@@ -3,22 +3,55 @@
     <h1 class="animate__animated animate__bounce">{{estancia.nombre}} <small>{{estancia.direccion}}</small></h1>
 <hr>
 
-<div class="row animated fadeIn fast">
-        <div class="col-md-4 text-center">
-            <img width="350px" src="{{estancia.imagen}}" alt="..." class="img-fluid">
-            <br><br>
-            <a [routerLink]="['/estancias']" class="btn btn-outline-danger btn-block">Regresar</a>
-        </div>
+<!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 220">
+  <div class="flip-card">
 
-        <div class="col-md-8">
-            <h3>{{estancia.nombre}}</h3>
-            <hr>
-            <p>Propietario: {{estancia.propietario}}</p>
-            <p>Teléfono: {{estancia.telefono}}</p>
-            <p>Correo: {{estancia.email}}</p>
-            <p>Precio: ${{estancia.precio}}</p>
-            <p>Direccion: {{estancia.direccion}}</p>
-        </div>
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="{{estancia.imagen}}" alt="..." class="img-fluid">
+        <figcaption>{{estancia.nombre}}</figcaption>
+      </figure>
+
+      <ul>
+        <li>Propietario: {{estancia.propietario}}</li>
+        <li>{{estancia.telefono}}</li>
+        <li>{{estancia.email}}</li>
+
+        @if (estancia.precio > 100) {
+          <li>Precio de estancia de lujo: ${{estancia.precio}}</li>
+        } @else {
+          <li>Precio de estancia normal: ${{estancia.precio}}</li>
+        }
+
+        <li>Dirección: {{estancia.direccion}}</li>
+      </ul>
+    </div>
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="{{estancia.imagen}}" alt="..." class="img-fluid">
+      </figure>
+
+      <button>{{estancia.nombre}}</button>
+
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</body>
+<!-- /flip-card-container -->
+<a [routerLink]="['/estancias']" class="glow-on-hover">Regresar</a>
+
+<br><br><br>

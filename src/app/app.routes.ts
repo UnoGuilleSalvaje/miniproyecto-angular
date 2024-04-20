@@ -17,5 +17,6 @@ export const routes: Routes = [
     {path: 'about', component: AboutComponent},
     {path: 'search', component: SearchComponent},
     {path: 'estancia/:id', component: UnaEstanciaComponent},
+    {path: 'buscador/:nombree', component: SearchComponent},
     {path: '**', redirectTo: 'inicio'}
 ];

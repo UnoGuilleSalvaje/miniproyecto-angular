@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -21,5 +21,11 @@ export class NavbarComponent {
     script.async = false;
     script.defer = true;
     body.appendChild(script);
+  }
+
+  constructor(private router:Router) {}
+
+  buscarUnaEstancia(nombre:string) {
+    this.router.navigate(['/buscador', nombre]);
   }
 }

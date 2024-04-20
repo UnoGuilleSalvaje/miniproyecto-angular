@@ -24,8 +24,15 @@
       <li class="navbar__item">
         <a [routerLink]="['/about']" class="navbar__link"><i class="fas fa-info-circle"></i><span>Acerca de</span></a>        
       </li>
-      <li class="navbar__item">
-        <a [routerLink]="['/search']" class="navbar__link"><i class="fas fa-search"></i><span>Buscar</span></a>       
+      <li class="container navbar__item" id="buscoestancia">
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder=" Search..." #buscarTexto (keyup.enter)="buscarUnaEstancia(buscarTexto.value)" style="z-index: 999;">
+          <div class="input-group-append">
+            <a [routerLink]="['/search']" class="navbar__link btn-primary" style="position: absolute; right: 0; padding-left: 25px;">
+              <i class="fas fa-search"></i>
+            </a>
+          </div>
+        </div>
       </li>
     </ul>
   </nav>

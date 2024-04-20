@@ -27,4 +27,9 @@ export class EstanciasService {
     getUnaEstancia(posicion:number):Estancia{
       return this.estancias[posicion];
     }
+
+    searchUnaEstancia(nomestancia:string):number{
+      let index = this.estancias.findIndex(p => p.nombre == nomestancia);
+      return index
+    }
 }

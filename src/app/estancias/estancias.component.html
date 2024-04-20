@@ -9,7 +9,7 @@
     <div class="card-columns">
       @for (e of miEstancia; track e; let i = $index) {
       <div class="card">
-        <img src="{{e.imagen}}" class="card-img" alt="...">
+        <img [routerLink]="['/estancia',i]" src="{{e.imagen}}" class="imgn card-img" alt="...">
       </div>
       <div class="card p-3 text-right">
         <blockquote class="blockquote mb-0">
@@ -21,7 +21,12 @@
           <p>{{e.direccion}}</p>
         </blockquote>
         <br>
-        <a [routerLink]="['/estancia',i]" class="mb-3 btn btn-outline-primary btn-block">Ver más</a>
+        <a [routerLink]="['/estancia',i]" class="btn" style="text-align: center;">
+          <span></span><span></span>
+          <span></span><span></span>
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          Ver más
+        </a>
       </div>
     }
       
@@ -52,4 +57,5 @@
       }
     </div>
   </div>
+
 </body>

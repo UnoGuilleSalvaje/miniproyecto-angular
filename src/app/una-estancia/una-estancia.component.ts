@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Estancia } from '../estancia';
 import { EstanciasService } from '../services/estancias.service';
@@ -11,7 +11,7 @@ import { EstanciasService } from '../services/estancias.service';
   styleUrl: './una-estancia.component.css'
 })
 export class UnaEstanciaComponent {
-  estancia!:Estancia;
+  @Input()estancia!:Estancia;
   constructor(public estanciasService:EstanciasService, public activatedRoute: ActivatedRoute) {
       this.activatedRoute.params.subscribe(params => {
         this.estancia = estanciasService.getUnaEstancia(params['id']);
