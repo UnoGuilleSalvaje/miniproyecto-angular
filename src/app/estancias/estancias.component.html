@@ -1,6 +1,33 @@
 <body>
   <div class="wrapper">
     <br><br><br>
+
+    <h1>Estancias</h1>
+    <br>
+    
+    
+    <div class="card-columns">
+      @for (e of miEstancia; track e; let i = $index) {
+      <div class="card">
+        <img src="{{e.imagen}}" class="card-img" alt="...">
+      </div>
+      <div class="card p-3 text-right">
+        <blockquote class="blockquote mb-0">
+          <h2>{{e.nombre}}</h2><br>
+          <p>Propietario: {{e.propietario}}</p>
+          <p>{{e.telefono}}</p>
+          <p>{{e.email}}</p>
+          <p>${{e.precio}}</p>
+          <p>{{e.direccion}}</p>
+        </blockquote>
+        <br>
+        <a [routerLink]="['/estancia',i]" class="mb-3 btn btn-outline-primary btn-block">Ver más</a>
+      </div>
+    }
+      
+    </div>
+
+    <br><br>
     <h1>Top estancias más visitadas</h1>
     <div class="cols">
       @for (item of array; track item) {
@@ -14,10 +41,10 @@
             <div class="back">
               <div class="inner">
                 <span>{{ item.propietario }}</span>
-                <p>{{ item.direccion }}</p>
-                <p>Teléfono: {{ item.telefono }}</p>
-                <p>Email: {{ item.email }}</p>
-                <p>Precio: ${{ item.precio }}.00</p>
+                <p class="top">{{ item.direccion }}</p>
+                <p class="top">Teléfono: {{ item.telefono }}</p>
+                <p class="top">Email: {{ item.email }}</p>
+                <p class="top">Precio: ${{ item.precio }}.00</p>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import { EstanciasComponent } from './estancias/estancias.component';
 import { BlogComponent } from './blog/blog.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
+import { UnaEstanciaComponent } from './una-estancia/una-estancia.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path: 'blog', component: BlogComponent},
     {path: 'about', component: AboutComponent},
     {path: 'search', component: SearchComponent},
+    {path: 'estancia/:id', component: UnaEstanciaComponent},
     {path: '**', redirectTo: 'inicio'}
 ];

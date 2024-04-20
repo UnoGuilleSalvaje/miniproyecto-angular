@@ -1,0 +1,24 @@
+<body>
+    <br><br><br><br>
+    <h1 class="animate__animated animate__bounce">{{estancia.nombre}} <small>{{estancia.direccion}}</small></h1>
+<hr>
+
+<div class="row animated fadeIn fast">
+        <div class="col-md-4 text-center">
+            <img width="350px" src="{{estancia.imagen}}" alt="..." class="img-fluid">
+            <br><br>
+            <a [routerLink]="['/estancias']" class="btn btn-outline-danger btn-block">Regresar</a>
+        </div>
+
+        <div class="col-md-8">
+            <h3>{{estancia.nombre}}</h3>
+            <hr>
+            <p>Propietario: {{estancia.propietario}}</p>
+            <p>Teléfono: {{estancia.telefono}}</p>
+            <p>Correo: {{estancia.email}}</p>
+            <p>Precio: ${{estancia.precio}}</p>
+            <p>Direccion: {{estancia.direccion}}</p>
+        </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
