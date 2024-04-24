@@ -9,5 +9,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
+  userEmail: string = '';
 
+  updateEmail() {
+    console.log('Email actualizado:', this.userEmail);
+  }
 }
