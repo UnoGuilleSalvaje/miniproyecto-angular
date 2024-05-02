@@ -1,0 +1,68 @@
+
+<div class="form-container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Ingrese los datos de la reservación:</h3>
+        </div>
+        <form [formGroup]="registroForm" (ngSubmit)="guardarRegistro()">
+            <div class="form-group">
+                <label for="fechaHora">Fecha y Hora:</label>
+                <input type="datetime-local" formControlName="fechaHora" id="fechaHora" required>
+                <div *ngIf="registroForm.get('fechaHora')?.hasError('dateTimeOccupied')">
+                    <span class="error-message">Fecha y hora ya ocupada</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" formControlName="nombre" id="nombre" required>
+                <div *ngIf="registroForm.get('nombre')?.hasError('pattern')">
+                    <span class="error-message">Solo se permiten caracteres alfabéticos y espacios</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" formControlName="telefono" id="telefono" required>
+                <div *ngIf="registroForm.get('telefono')?.hasError('pattern')">
+                    <span class="error-message">Solo se permiten números</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" formControlName="correo" id="correo" required>
+                <div *ngIf="registroForm.get('correo')?.hasError('email')">
+                    <span class="error-message">Correo inválido</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" formControlName="precio" id="precio" required min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" formControlName="direccion" id="direccion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="imagen">Imagen de la casa/apartamento:</label>
+                <input type="text" formControlName="imagen" id="imagen" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dias">Días de estancia:</label>
+                <input type="number" formControlName="dias" id="dias" required min="1">
+            </div>
+
+            <div class="button-group">
+                <button type="submit" [disabled]="registroForm.invalid">Guardar Registro</button>
+            </div>
+        </form>
+        <div class="card-footer">
+            <p>Gracias por utilizar nuestro servicio de reservaciones.</p>
+        </div>
+    </div>
+</div>
