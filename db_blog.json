@@ -1,0 +1,104 @@
+{
+    "blog": [
+        {
+            "id": 1,
+            "nombre": "Cabaña en el Bosque",
+            "propietario": "Juan Pérez",
+            "telefono": "+1 555 123 4567",
+            "email": "juan.perez@example.com",
+            "precio": 89.99,
+            "direccion": "123 Calle Principal, Ciudad Ejemplo",
+            "imagen": "https://i.pinimg.com/originals/3d/f0/33/3df033ff17247314f4527ae55ff891d5.jpg"
+        },
+        {
+            "id": 2,
+            "nombre": "Villa Tropical",
+            "propietario": "María García",
+            "telefono": "+1 555 987 6543",
+            "email": "maria.garcia@example.com",
+            "precio": 120.5,
+            "direccion": "456 Avenida Central, Pueblo Ejemplo",
+            "imagen": "https://blenderartists.org/uploads/default/original/4X/3/1/a/31addd78d022024d9cb12dc462f903d092cf046c.jpeg"
+        },
+        {
+            "id": 3,
+            "nombre": "Apartamento Céntrico",
+            "propietario": "Carlos Rodríguez",
+            "telefono": "+1 555 456 7890",
+            "email": "carlos.rodriguez@example.com",
+            "precio": 75.25,
+            "direccion": "789 Calle Secundaria, Municipio Ejemplo",
+            "imagen": "https://i.pinimg.com/originals/d1/e8/ee/d1e8ee28d81d50b7b945694a9b02916b.jpg"
+        },
+        {
+            "id": 4,
+            "nombre": "Loft Moderno",
+            "propietario": "Ana Martínez",
+            "telefono": "+1 555 012 3456",
+            "email": "ana.martinez@example.com",
+            "precio": 99.99,
+            "direccion": "159 Avenida Principal, Ciudad Ejemplo",
+            "imagen": "https://www.construyehogar.com/wp-content/uploads/2019/01/Dise%C3%B1o-de-minidepartamento.jpg"
+        },
+        {
+            "id": 5,
+            "nombre": "Casa de Campo",
+            "propietario": "Luis Hernández",
+            "telefono": "+1 555 789 0123",
+            "email": "luis.hernandez@example.com",
+            "precio": 145.75,
+            "direccion": "753 Calle Terciaria, Pueblo Ejemplo",
+            "imagen": "https://images.adsttc.com/media/images/52cd/3b84/e8e4/4e3a/3c00/0144/large_jpg/P_E_659-014-E_copy-MEDIA.jpg?1389181807"
+        },
+        {
+            "id": 6,
+            "nombre": "Departamento Frente al Mar",
+            "propietario": "Sofía Torres",
+            "telefono": "+1 555 456 7890",
+            "email": "sofia.torres@example.com",
+            "precio": 89.5,
+            "direccion": "321 Avenida Secundaria, Municipio Ejemplo",
+            "imagen": "https://www.selvacorealty.com/fotos_propiedades/2894/5-departameto-alberca-frente-al-mar-venta-tulum-ocean-view-beachfront-pool-for-sale-328d.jpg"
+        },
+        {
+            "id": 7,
+            "nombre": "Cabaña de Montaña",
+            "propietario": "Pedro Ramírez",
+            "telefono": "+1 555 012 3456",
+            "email": "pedro.ramirez@example.com",
+            "precio": 110.25,
+            "direccion": "987 Calle Principal, Ciudad Ejemplo",
+            "imagen": "https://cdn.puzzlegarage.com/img/puzzle/f/1583_preview_r.v1.jpg"
+        },
+        {
+            "id": 8,
+            "nombre": "Suite Luxury",
+            "propietario": "Laura Gómez",
+            "telefono": "+1 555 789 0123",
+            "email": "laura.gomez@example.com",
+            "precio": 95.99,
+            "direccion": "654 Avenida Central, Pueblo Ejemplo",
+            "imagen": "https://www.stationcasinos.com/wp-content/uploads/2020/04/RR-Luxury-Livingroom-scaled.jpg"
+        },
+        {
+            "id": 9,
+            "nombre": "Castillo Medieval",
+            "propietario": "Diego Flores",
+            "telefono": "+1 555 456 7890",
+            "email": "diego.flores@example.com",
+            "precio": 125.75,
+            "direccion": "159 Calle Secundaria, Municipio Ejemplo",
+            "imagen": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/49457373.jpg?k=de85c13004be67ad2ef9152e3c4187e952d3953842456231f2790c4c74e8d2a3&o=&hp=1"
+        },
+        {
+            "id": 10,
+            "nombre": "Bungalow en la Playa",
+            "propietario": "Gabriela Sánchez",
+            "telefono": "+1 555 012 3456",
+            "email": "gabriela.sanchez@example.com",
+            "precio": 79.5,
+            "direccion": "753 Avenida Principal, Ciudad Ejemplo",
+            "imagen": "https://www.tahitilegends.com/images1/gallery/Huvafen-Fushi-Maldives-Ocean-Pool-Bungalow-2000x1200_33213.jpg"
+        }
+    ]
+}
