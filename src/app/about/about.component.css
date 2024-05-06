@@ -66,4 +66,13 @@
       width: calc(33.33% - 10px);
     }
   }
+
+  .img {
+    width: 350px;
+    height: 350px;
+  }
+
+  mat-card-title {
+    color: white;
+  }
   

@@ -7,10 +7,11 @@ import { BlogComponent } from './blog/blog.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { UnaEstanciaComponent } from './una-estancia/una-estancia.component';
+import { FormularioComponent } from './formulario/formulario.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
-    {path: 'registro', component: RegistroComponent},
+    {path: 'formulario', component: FormularioComponent},
     {path: 'reporte', component: ReporteComponent},
     {path: 'estancias', component: EstanciasComponent},
     {path: 'blog', component: BlogComponent},
