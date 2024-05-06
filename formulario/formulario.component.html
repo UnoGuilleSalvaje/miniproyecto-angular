@@ -1,0 +1,39 @@
+<!-- formulario.html -->
+<body>
+    
+
+<div class="form-container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Formulario de Registro</h3>
+        </div>
+        <form [formGroup]="formularioForm" (ngSubmit)="guardarReservacion()">
+            <div class="form-group">
+                <label for="nombre">Nombre :</label>
+                <input id="nombre" formControlName="nombre" />
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input id="correo" formControlName="correo" />
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input id="telefono" formControlName="telefono" />
+            </div>
+            <div class="form-group">
+                <label for="fechaHora">Fecha y Hora:</label>
+                <input id="fechaHora" type="datetime-local" formControlName="fechaHora" min="currentDate" >
+            </div>
+            
+            <div class="form-group">
+                <label for="dias">Días:</label>
+                <input id="dias" type="number" formControlName="dias" min="1" />
+            </div>
+           <!-- guardar -->
+           <div class="button-group">
+            <button type="submit" [disabled]="formularioForm.invalid" class="btn-submit">Guardar Reserva</button>
+        </div>
+        </form>
+    </div>
+</div>
+</body>

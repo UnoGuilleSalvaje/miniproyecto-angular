@@ -1,0 +1,49 @@
+<body>
+  <div class="wrapper">
+    <br><br><br>
+
+    <h1>Estancias</h1>
+    <br>
+    
+    
+    <div class="card-columns">
+    </div>
+
+    <br><br>
+    <h1>Nuestras estancias disponibles</h1>
+    <div class="cols">
+      @for (item of array; track item) {
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" [style.backgroundImage]="'url(' + item.imagen + ')'">
+              <div class="inner">
+                <p>{{ item.nombre }}</p>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <span>{{ item.propietario }}</span>
+                <p class="top">{{ item.direccion }}</p>
+                <p class="top">Teléfono: {{ item.telefono }}</p>
+                <p class="top">Email: {{ item.email }}</p>
+                <p class="top">Precio: ${{ item.precio }}.00</p>
+               <!-- boton reservar con link a '/formulario' -->
+                <div class="container">
+                  <a [routerLink]="['/formulario']" class="btn" style="text-align: center;">
+                    <span></span><span></span>
+                    <span></span><span></span>
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Reservar
+
+                  </a>
+                  </div>
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+</body>
