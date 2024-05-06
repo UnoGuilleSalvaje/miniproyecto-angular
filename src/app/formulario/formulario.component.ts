@@ -29,7 +29,8 @@ export class FormularioComponent implements OnInit {
             fechaHora: ['', [Validators.required, this.validateDateTimeNotOccupied]],
             nombre: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
             telefono: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
-            dias: ['', [Validators.required, Validators.min(1)]]
+            dias: ['', [Validators.required, Validators.min(1)]],
+            correo: ['', [Validators.required, Validators.email]]
         });
     }
 
@@ -141,7 +142,7 @@ export class FormularioComponent implements OnInit {
   }
 
   estanciaSeleccionada: Estancia | null = null;
-estanciaSeleccionadaIndex: number | null = null;
+  estanciaSeleccionadaIndex: number | null = null;
 
 seleccionarEstancia(index: number | null): void {
     if (index !== null) {

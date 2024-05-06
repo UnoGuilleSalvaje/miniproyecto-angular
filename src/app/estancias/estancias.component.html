@@ -6,7 +6,7 @@
     <br>
     
     
-    <div class="card-columns">
+    <div class="card-columns" style="padding-left: 80px;">
       @for (e of miEstancia; track e; let i = $index) {
       <div class="card">
         <img [routerLink]="['/estancia',i]" src="{{e.imagen}}" class="imgn card-img" alt="...">
