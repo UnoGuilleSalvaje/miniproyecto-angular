@@ -23,6 +23,7 @@ export class NavbarComponent {
     body.appendChild(script);
   }
 
+  // Paso de parámetros del nombre de la estancia a buscar
   constructor(private router:Router) {}
 
   buscarUnaEstancia(nombre:string) {
