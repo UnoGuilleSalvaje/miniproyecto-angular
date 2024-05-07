@@ -24,6 +24,7 @@
 
             <!-- Selector de Estancias -->
 
+            <!-- De la vista al modelo -->
             <select (change)="seleccionarEstancia($any($event.target).value)" class="button-g">
                 <option value="">Seleccionar Estancia</option>
                 @for (e of miEstancia; track e; let i = $index) {
