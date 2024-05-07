@@ -1,0 +1,258 @@
+<body style="background-color: rgb(206, 203, 203);">
+    <div class="wrapper">
+      <br><br><br>
+      <header>
+        <h1>Blog de Viajes</h1>
+        <h2>Explora nuestros artículos sobre diferentes países!!!!</h2>
+      </header>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <div class="countries" style="background-color: #171717;">
+        <nav class="navbar contenedor">
+          <ul class="nav-list contenedor">
+            <li><a href="#spain">España</a></li>
+            <li><a href="#france">Francia</a></li>
+            <li><a href="#italy">Italia</a></li>
+            <li><a href="#japan">Japón</a></li>
+            <li><a href="#usa">Estados Unidos</a></li>
+            <li><a href="#australia">Australia</a></li>
+          </ul>
+        </nav>
+      
+      </div>
+      <br><br>
+      <div style="margin-top: 0;">
+      <div class="contenedor">
+        <div class="item"> España 
+          <br>
+        <img src="../../assets/img/Espana-turismo.jpg" width="500">
+        <br>
+        <br><p style="color: black;">España, país de la península ibérica de Europa, incluye 17 regiones autónomas con diversas características geográficas y culturales. En Madrid, su capital, se encuentra el Palacio Real y el Museo del Prado, que alberga obras de maestros europeos. Segovia tiene un castillo medieval (el Alcázar) y un acueducto romano intacto. La capital de Cataluña, Barcelona, se caracteriza por las obras modernistas extravagantes de Antoni Gaudí, como el templo de la Sagrada Familia.</p>
+        <br>
+      </div>
+    
+      <div class="card-columns" >
+        @for (e of miBlog; track e; let i = $index) {
+        <div class="card">
+          <img src="../../assets/img/Bandera_de_España.svg.png"  alt="..." width="400">
+        
+  
+        <div class="card p-3 text-right ">
+          <blockquote class="blockquote mb-0">
+            <h2>¿Porque deberias de visitarlo?</h2><br>
+            <p> España es un destino que ofrece una combinación única de cultura rica, gastronomía deliciosa, playas hermosas, arquitectura impresionante, festivales vibrantes y hospitalidad excepcional. Es un lugar donde puedes sumergirte en la historia mientras disfrutas de la vida moderna.</p>
+
+          </blockquote>
+          <br>
+          <a [routerLink]="['/blog',i]" class="btn" style="text-align: center;">
+            <span></span><span></span>
+            <span></span><span></span>
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            Ver más
+          </a>
+        </div>
+      </div>
+        
+        <img src="../../assets/img/270px-Sp-map-es.png" alt="" width="350" height="500" >
+      }
+      
+      
+    </div>
+ 
+  
+      </div>
+    </div>
+
+    <div class="contenedor">
+      <div class="item"> Francia 
+        <br>
+      <img src="../../assets/img/paris-francia.webp" width="500">
+      <br>
+      <br><p style="color: black;">Es el país más extenso de Europa Occidental (con cerca de 1/5 de la superficie de la UE) y cuenta con una gran zona marítima (zona económica exclusiva que cubre 11 millones de kilómetros cuadrados, la segunda más grande del mundo).</p>
+      <br>
+    </div>
+    <div class="card-columns">
+      @for (e of miBlog; track e; let i = $index) {
+        <div class="card">
+        <img  src="../../assets/img/Flag_of_France_(1794–1815,_1830–1974).svg.png"  alt="..." width="400">
+      
+
+      <div class="card p-3 text-right ">
+        <blockquote class="blockquote mb-0">
+          <h2>¿Porque deberias de visitarlo?</h2><br>
+          <p>Visita Francia por su exquisita gastronomía, su impresionante arquitectura, sus hermosos paisajes y su rica historia cultural. Desde la Torre Eiffel en París hasta los viñedos de la región de Borgoña, Francia tiene mucho que ofrecer a los viajeros.</p>
+
+        </blockquote>
+        <br>
+        <a [routerLink]="['/blog',i]" class="btn" style="text-align: center;">
+          <span></span><span></span>
+          <span></span><span></span>
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          Ver más
+        </a>
+      </div>
+    </div>
+    
+<img src="../../assets/img/francia-21.gif" alt="" width="350" height="450">
+
+    }
+
+    
+  </div>
+</div>
+
+  
+<div class="contenedor">
+  <div class="item"> Italia 
+    <br>
+  <img src="../../assets/img/venecia-italia.jpg" width="500">
+  <br>
+  <br><p style="color: black;" >Hogar de la antigua Roma y el Renacimiento, Italia es un país lleno de historia, arte y romance. Sus ciudades emblemáticas incluyen Roma, con el Coliseo y el Vaticano; Florencia, cuna del Renacimiento; y Venecia, conocida por sus canales. La cocina italiana es famosa en todo el mundo por platos como la pizza y la pasta.</p>
+  <br>
+</div>
+<div class="card-columns">
+  @for (e of miBlog; track e; let i = $index) {
+  <div class="card">
+    <img  src="../../assets/img/Flag_of_Italy.svg.png" width="400" alt="...">
+  
+
+  <div class="card p-3 text-right ">
+    <blockquote class="blockquote mb-0">
+      <h2>¿Porque deberias de visitarlo?</h2><br>
+      <p> Italia es un destino ideal para los amantes de la historia, el arte y la comida. Desde los monumentos históricos de Roma hasta las pintorescas calles de Venecia y la costa impresionante de la costa amalfitana, Italia tiene algo para todos los gustos.</p>
+
+    </blockquote>
+    <br>
+    <a [routerLink]="['/blog',i]" class="btn" style="text-align: center;">
+      <span></span><span></span>
+      <span></span><span></span>
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Ver más
+    </a>
+  </div>
+  </div>
+  
+}
+
+
+<img src="../../assets/img/italy_map.gif" width="350">
+
+
+</div>
+</div>
+<div class="contenedor">
+  <div class="item"> Japon 
+    <br>
+  <img src="../../assets/img/japon-7-e1571188430646.jpg" width="500">
+  <br>
+  <br><p style="color: black;" >Una fascinante mezcla de tradición y modernidad, Japón es conocido por su tecnología avanzada, su cultura única y su impresionante naturaleza. Desde los rascacielos de Tokio hasta los templos antiguos de Kioto y los paisajes montañosos de Hokkaido, Japón ofrece una experiencia única para los viajeros.</p>
+  <br>
+</div>
+<div class="card-columns">
+  @for (e of miBlog; track e; let i = $index) {
+  <div class="card">
+    <img src="../../assets/img/Flag_of_Japan.svg" width="400" alt="...">
+ 
+
+  <div class="card p-3 text-right ">
+    <blockquote class="blockquote mb-0">
+      <h2>¿Porque deberias de visitarlo?</h2><br>
+      <p>Descubre Japón por su fascinante mezcla de tradición y modernidad. Desde los templos antiguos de Kioto hasta los rascacielos futuristas de Tokio, Japón ofrece una experiencia única que combina la serenidad con la emoción.</p>
+
+    </blockquote>
+    <br>
+    <a [routerLink]="['/blog',i]" class="btn" style="text-align: center;">
+      <span></span><span></span>
+      <span></span><span></span>
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Ver más
+    </a>
+  </div>
+  </div>
+  
+}
+
+<img src="../../assets/img/mapa-japon1.gif" width="350" height="450">
+
+
+
+</div>
+</div>
+<div class="contenedor">
+  <div class="item"> Estados Unidos 
+    <br>
+  <img src="../../assets/img/IMG-1-Monte-rushmore.jpg" width="500">
+  <br>
+  <br><p style="color: black;" >Una nación diversa y multicultural, Estados Unidos es conocido por su influencia global en la cultura, la política y la economía. Desde la ciudad de Nueva York, el centro financiero y cultural del país, hasta los parques nacionales del oeste, como el Gran Cañón y Yellowstone, Estados Unidos ofrece una amplia gama de experiencias para los visitantes.</p>
+  <br>
+</div>
+<div class="card-columns">
+  @for (e of miBlog; track e; let i = $index) {
+  <div class="card">
+    <img src="../../assets/img/Flag_of_the_United_States.svg.png" width="400" alt="...">
+  
+
+  <div class="card p-3 text-right ">
+    <blockquote class="blockquote mb-0">
+      <h2>¿Porque deberias de visitarlo?</h2><br>
+      <p>Estados Unidos es un país diverso y emocionante que ofrece una amplia gama de experiencias. Desde los rascacielos de Nueva York hasta los parques nacionales del oeste, pasando por las playas de California y la música en vivo de Nueva Orleans, hay algo para todos los gustos en Estados Unidos.</p>
+
+    </blockquote>
+    <br>
+    <a [routerLink]="['/blog',i]" class="btn" style="text-align: center;">
+      <span></span><span></span>
+      <span></span><span></span>
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Ver más
+    </a>
+  </div>
+</div>
+  
+}
+
+<img src="../../assets/img/350px-Map_of_USA_elevations.png" width="350">
+
+
+
+</div>
+</div>
+<div class="contenedor">
+  <div class="item"> Australia
+    <br>
+  <img src="../../assets/img/191011110307-02-australia-beautiful-places.jpg" width="500">
+  <br>
+  <br><p style="color: black;" >Un vasto y hermoso país conocido por su impresionante naturaleza, desde las playas de arena blanca hasta las selvas tropicales y el desierto rojo del interior. Las ciudades como Sídney, Melbourne y Brisbane ofrecen una combinación de vida urbana y actividades al aire libre, mientras que los parques nacionales como el Parque Nacional Kakadu y el Parque Nacional de los Pinnacles muestran la belleza natural única de Australia.</p>
+  <br>
+</div>
+
+<div class="card-columns">
+  @for (e of miBlog; track e; let i = $index) {
+  <div class="card">
+    <img  src="../../assets/img/Flag_of_Australia_(converted).svg" width="400" alt="...">
+  
+
+  <div class="card p-3 text-right ">
+    <blockquote class="blockquote mb-0">
+      <h2>¿Porque deberias de visitarlo?</h2><br>
+      <p>Con su impresionante naturaleza, playas de ensueño y ciudades vibrantes, Australia es un destino que no te puedes perder. Desde explorar la Gran Barrera de Coral hasta hacer surf en la costa de Gold Coast, Australia ofrece aventuras inolvidables para los viajeros.</p>
+
+    </blockquote>
+    <br>
+    <a [routerLink]="['/blog',i]" class="btn" style="text-align: center;">
+      <span></span><span></span>
+      <span></span><span></span>
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Ver más
+    </a>
+  </div>
+</div>
+  
+}
+<img  src="../../assets/img/HD-wallpaper-australia-classy-globe-map-space-world-thumbnail.jpg" width="350" height="450" >
+</div>
+
+
+
+
+
+</div>
+
