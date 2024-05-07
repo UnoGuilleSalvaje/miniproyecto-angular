@@ -19,4 +19,5 @@ export class InicioComponent {
   updateEmail() {
     console.log('Email actualizado:', this.userEmail);
   }
+  video: string = "QXt21aGi_nQ?si=_c61Gdel1By3kTDI";
 }
