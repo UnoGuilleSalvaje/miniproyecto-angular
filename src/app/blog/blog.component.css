@@ -646,11 +646,13 @@ body {
     display: flex; /* Establece el contenedor como un flex container */
   }
   .item {
-    flex: 1; /* Cada elemento tomará el mismo espacio dentro del contenedor */
+    flex: 1; /* Cada elemento tomará el mismo espacio dentro del contenedor ----- */
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #383838;
+    color: wh;
     margin: 5px;
     text-align: center;
+    margin-left: 60px;
   }
   .navbar {
     background-color: #333;
