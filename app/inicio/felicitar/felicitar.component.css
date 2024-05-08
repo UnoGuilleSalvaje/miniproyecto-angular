@@ -1,0 +1,30 @@
+body {
+    
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url(https://oasisblog.nyc3.cdn.digitaloceanspaces.com/2016/05/APROVECHA-EL-TIEMPO-EN-TUS-VACACIONES-DE-VERANO_MOD-1024x768-1024x768.jpg) !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.mensajePadre {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+}
