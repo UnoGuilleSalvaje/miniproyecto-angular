@@ -1,0 +1,68 @@
+<!-- formulario.html -->
+<body>
+    
+
+<div class="form-container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Formulario de Registro</h3>
+        </div>
+        <form [formGroup]="formularioForm" (ngSubmit)="guardarReservacion()">
+            <div class="form-group">
+                <label for="nombre">Nombre :</label>
+                <input id="nombre" formControlName="nombre" />
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input id="correo" formControlName="correo" />
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input id="telefono" formControlName="telefono" />
+            </div>
+            <br>
+
+            <!-- Selector de Estancias -->
+
+            <!-- De la vista al modelo -->
+            <select (change)="seleccionarEstancia($any($event.target).value)" class="button-g">
+                <option value="">Seleccionar Estancia</option>
+                @for (e of miEstancia; track e; let i = $index) {
+                  <option value="{{i}}">{{e.nombre}} </option>
+                }
+              </select>
+              
+              @if (estanciaSeleccionada) {
+                <div class="cardd">
+                  <img [routerLink]="['/estancia', estanciaSeleccionadaIndex]" src="{{estanciaSeleccionada.imagen}}" class="imgn card-img" alt="...">
+                </div>
+                <div class="cardd p-3 text-right">
+                  <blockquote class="blockquote mb-0">
+                    <h2><b>{{estanciaSeleccionada.nombre}}</b></h2><br>
+                    <p>Propietario: {{estanciaSeleccionada.propietario}}</p>
+                    <p>Precio: ${{estanciaSeleccionada.precio}}</p>
+                    <p>Dirección: {{estanciaSeleccionada.direccion}}</p>
+                  </blockquote>
+                </div>
+              }
+
+              <!-- --------------------------- -->
+              
+            <br><br>
+            <div class="form-group">
+                <label for="fechaHora">Fecha y Hora:</label>
+                <input id="fechaHora" type="datetime-local" formControlName="fechaHora" min="currentDate" >
+            </div>
+            
+            <div class="form-group">
+                <label for="dias">Días:</label>
+                <input id="dias" type="number" formControlName="dias" min="1" />
+            </div>
+           <!-- guardar -->
+           <div class="button-group">
+            <button type="submit" [disabled]="formularioForm.invalid" class="btn-submit">Guardar Reserva</button>
+        </div>
+        </form>
+    </div>
+</div>
+</body>

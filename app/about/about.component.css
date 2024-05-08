@@ -1,0 +1,78 @@
+.example-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+  body {
+    background: #171717;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    text-align: center;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  h1 {
+    padding: 5px 50px 5px 90px;
+    font-size: 2.5rem;
+    font-family: 'Montserrat';
+    font-weight: normal;
+    color: #848484;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  h3 {
+    color: blanchedalmond;
+  }
+  p {
+    color:rgb(95, 94, 94);
+  }
+  
+  .wrapper {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 80rem;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan cuando no quepan en una sola fila */
+    justify-content: space-between;
+    align-items: flex-start;
+  
+    width: 90%;
+    margin: 0 auto;
+    max-width: 80rem;
+  }
+  .example-card {
+    width: calc(50% - 10px); /* Haz que las tarjetas ocupen el 50% del ancho de su contenedor, con un espacio entre ellas */
+    margin-bottom: 20px; /* Agrega un espacio entre las tarjetas */
+  }
+  
+  @media (min-width: 768px) {
+    .example-card {
+      width: calc(33.33% - 10px);
+    }
+  }
+
+  .img {
+    width: 350px;
+    height: 350px;
+  }
+
+  mat-card-title {
+    color: white;
+  }
+  

@@ -1,0 +1,13 @@
+@if(indice == -1){
+    <div class="row animate__animated animate__backInLeft">
+        <div class="co-md-12">
+            <div class="alert alert-info" role="alert">
+                No existen resultados para <b>{{nombree}}</b>
+            </div>
+        </div>
+
+    </div>
+} @else {
+    <!-- Llamamos al componente unaestancia, el componente padre manda un valor al componente hijo -->
+    <app-una-estancia [estancia]='miEstancia'></app-una-estancia>
+}
