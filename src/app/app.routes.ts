@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { UnaEstanciaComponent } from './una-estancia/una-estancia.component';
 import { FormularioComponent } from './formulario/formulario.component';
+import { FelicitarComponent } from '../app/inicio/felicitar/felicitar.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -19,5 +20,6 @@ export const routes: Routes = [
     {path: 'search', component: SearchComponent},
     {path: 'estancia/:id', component: UnaEstanciaComponent},
     {path: 'buscador/:nombree', component: SearchComponent},
+    {path: 'felicitar', component: FelicitarComponent},
     {path: '**', redirectTo: 'inicio'}
 ];

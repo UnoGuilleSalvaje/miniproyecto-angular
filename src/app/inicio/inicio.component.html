@@ -1,8 +1,57 @@
 <body>
-  <div class="wrapper">
+  
+<div class="wrapper">
+  <br><br><br>
+
+  <h1 style="text-align: center; color: white;"> StayInn </h1>
+  <br>
+  <p>Bienvenido a StayInn, su destino ideal para experiencias de alojamiento inolvidables. Descubra un mundo de comodidad, lujo y hospitalidad excepcional.</p>
+      <p>Explore nuestra amplia gama de habitaciones y servicios diseñados para hacer de su estancia una experiencia única y memorable.</p>
+
+
+      <br>
+  <br>
+  <div class="video">
+    <iframe width="560"
+            height="315"
+            [src]="video | domseguro: 'https://www.youtube.com/embed/'"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+    </iframe>
+  </div>
+<br><br>
+
+    <table>
+      <tr>
+          <th>Motivos para Reservar en StayInn</th>
+      </tr>
+      <tr>
+          <td>Ubicación céntrica ideal para explorar la ciudad</td>
+      </tr>
+      <tr>
+          <td>Alojamiento de lujo a precios asequibles</td>
+      </tr>
+      <tr>
+          <td>Personal amable y servicio al cliente excepcional</td>
+      </tr>
+      <tr>
+          <td>Variedad de opciones de habitaciones para satisfacer todas sus necesidades</td>
+      </tr>
+      <tr>
+          <td>Instalaciones modernas y servicios de alta calidad</td>
+      </tr>
+  </table>
+  
+
     <br><br><br>
 
-    <div class="card">
+
+  <div class="card">
+    <mat-card-header>
+      <img mat-card-avatar mat-card-avatar src="../../assets/img/StayInn.png" width="80" >
+     
+    </mat-card-header>    
       <h2>Suscríbete a nuestra página!</h2>
       <div class="row">
         <div class="col">
@@ -12,32 +61,50 @@
           </div>
         </div>
 
-        <div class="col">
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" [(ngModel)]="userEmail" name="email" (input)="updateEmail()">
-          </div>
+      <div class="col">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="userEmail" name="email" (input)="updateEmail()">
         </div>
+      </div>
 
-        <div class="col">
-          <div class="form-group">
-            <label>Teléfono</label>
-            <input type="number">
-          </div>
+
+
+      <div class="col">
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="number">
         </div>
-
-
-        <div class="col">
-
-          <a (click)="suscribir()" class="subscribe-link" type="button" value>
-              <span></span><span></span>
-              <span></span><span></span>
-              <span role="status" aria-hidden="true"></span>
-              Suscribirse
-          </a>
       </div>
-      </div>
+
+
+      <div class="col">
+
+        <a (click)="suscribir()" class="subscribe-link" type="button" value>
+            <span></span><span></span>
+            <span></span><span></span>
+            <span role="status" aria-hidden="true"></span>
+            Suscribirse
+        </a>
     </div>
-    <br> <br> <br> <br> <br> <br>
+    </div>
+    </div>
   </div>
+
+  <br> <br> <br> <br> <br> <br>
+
+  <div *ngFor="let reserva of ultimasReservaciones">
+    <div *ngIf="reserva.tipo === 'Reservación'">
+      <p>Reservación ID: {{ reserva.id }}</p>
+      <p>Fecha: {{ reserva.fecha }}</p>
+      <p>Cliente: {{ reserva.cliente }}</p>
+      <p>Habitación: {{ reserva.habitacion }}</p>
+    </div>
+    <div *ngIf="reserva.tipo === 'Oferta'">
+      <p>Oferta ID: {{ reserva.id }}</p>
+      <p>Fecha: {{ reserva.fecha }}</p>
+      <p>Producto: {{ reserva.producto }}</p>
+    </div>
+  </div>
+
 </body>
