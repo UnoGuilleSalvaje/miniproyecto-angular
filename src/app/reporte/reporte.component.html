@@ -1,8 +1,9 @@
 <body>
-    <h2>Citas Anteriores</h2>
+    <h2 style="padding-top: 40px;">Citas Anteriores</h2>
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Fecha y Hora</th>
       <th>Nombre</th>
       <th>Teléfono</th>
@@ -16,6 +17,7 @@
   <tbody>
     @for (cita of citasAnteriores; track cita; let i = $index) {
       <tr>
+        <td>{{ cita.id }}</td>
         <td>{{ cita.fechaHora }}</td>
         <td>{{ cita.nombre }}</td>
         <td>{{ cita.telefono }}</td>
@@ -25,6 +27,7 @@
         <td>{{ cita.estancia.precio }}</td>
         <td>#{{ cita.estancia.direccion }}</td>
         <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+        <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
       </tr>
     }
   </tbody>
@@ -36,6 +39,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Fecha y Hora</th>
       <th>Nombre</th>
       <th>Teléfono</th>
@@ -49,6 +53,7 @@
   <tbody>
     @for (cita of citasFuturas; track cita; let i = $index) {
       <tr>
+        <td>{{ cita.id }}</td>
         <td>{{ cita.fechaHora }}</td>
         <td>{{ cita.nombre }}</td>
         <td>{{ cita.telefono }}</td>
@@ -58,6 +63,7 @@
         <td>{{ cita.estancia.precio }}</td>
         <td>#{{ cita.estancia.direccion }}</td>
         <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+        <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
       </tr>
     }
   </tbody>
@@ -65,7 +71,7 @@
 
 <br><br><br>
 
-<div class="accordion" id="accordionExample" style="padding-left: 80px;">
+<!-- <div class="accordion" id="accordionExample" style="padding-left: 80px;">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -102,7 +108,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 </body>

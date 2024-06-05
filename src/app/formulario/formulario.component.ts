@@ -8,6 +8,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
 import { Estancias } from '../interfaces/estancias';
 import Swal from 'sweetalert2'
+import { PlacesService } from '../services/places.service';
 
 @Component({
     selector: 'app-formulario',
@@ -23,9 +24,12 @@ export class FormularioComponent implements OnInit {
     // guardar currentdate para validar que no se esocga una fecha ya pasada
     currentDate = new Date();
 
-    constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, public estanciasService: EstanciasService, public miservicio: EstanciasService) {
+    // Constructor ------------------------------------------------------------------------------------------------------>
+    constructor(private placesService: PlacesService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router, public estanciasService: EstanciasService, public miservicio: EstanciasService) {
         // Inicializa el formulario con los campos y las validaciones requeridas
+        // Aquí, se está creando un formulario reactivo utilizando el FormBuilder de Angular. Los campos del formulario se definen en el FormGroup y se les aplican las validaciones correspondientes.
         this.formularioForm = this.fb.group({
+            id: [''],
             fechaHora: ['', [Validators.required, this.validateDateTimeNotOccupied]],
             nombre: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
             telefono: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
@@ -46,7 +50,7 @@ export class FormularioComponent implements OnInit {
                 direccion: this.estancia.direccion,
                 correo: this.estancia.correo,
                 nombre: this.estancia.nombre,
-                
+                id: this.estancia.id
             });
         }
 
@@ -98,19 +102,24 @@ export class FormularioComponent implements OnInit {
   
   
 
-    // Guardar la reservación
-    guardarReservacion(): void {
+    // Guardar la reservación ------------------------------------------------------------------------------------------------------>
+    async guardarReservacion() {
+      const reservaKey = 'reserva_' + Date.now(); // Aquí utilizo la marca de tiempo actual como parte de la clave
+
       if (this.formularioForm.valid && this.estanciaSeleccionada) {
           const reserva = {
               ...this.formularioForm.value,
+              id: reservaKey, // Agregar la clave única como el ID de la reserva
               estancia: this.estanciaSeleccionada // Agregar la estancia seleccionada a los datos de la reserva
           };
   
-          // Generar una clave única para la reserva
-          const reservaKey = 'reserva_' + Date.now(); // Aquí utilizo la marca de tiempo actual como parte de la clave
-  
           // Almacenar en Local Storage utilizando la clave única
-          localStorage.setItem(reservaKey, JSON.stringify(reserva));
+          //localStorage.setItem(reservaKey, JSON.stringify(reserva));
+  
+          //Firebase
+          console.log(reserva); // Asegúrate de que `reserva` incluye todos los datos necesarios
+          const response = await this.placesService.addPlace(reserva); // Enviar la reserva completa, incluyendo `estancia`
+          console.log(response); // Comprobar si se guardó o no
   
           // Mostrar mensaje de éxito con SweetAlert
           Swal.fire('¡Éxito!', 'Reservación guardada con éxito.', 'success');
@@ -121,6 +130,7 @@ export class FormularioComponent implements OnInit {
           Swal.fire('Error', 'El formulario no es válido o no se ha seleccionado una estancia.', 'error');
       }
   }
+  
 
   array:Estancias [] = [];
 

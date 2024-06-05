@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlacesService } from '../services/places.service';
+import Place from '../interfaces/place.interface';
 
 @Component({
   selector: 'app-reporte',
@@ -11,31 +13,41 @@ export class ReporteComponent implements OnInit {
   citasAnteriores: any[] = [];
   citasFuturas: any[] = [];
 
-  constructor() { }
+
+  constructor(private placesService: PlacesService) { }
 
   ngOnInit(): void {
-    this.obtenerCitas();
+    //Firestore
+    this.placesService.getPlaces().subscribe((places: Place[]) => {
+      console.log("Reporte Firebase: ", places);
+      this.citasAnteriores = []; // Reiniciar el arreglo
+      this.citasFuturas = []; // Reiniciar el arreglo
+      this.categorizeCitas(places);
+    });
   }
+  
 
-  obtenerCitas(): void {
-    const reservas = this.obtenerReservasDesdeLocalStorage();
-    const fechaActual = new Date();
+  categorizeCitas(places: Place[]) {
+    const now = new Date().getTime();
 
-    this.citasAnteriores = reservas.filter(reserva => new Date(reserva.fechaHora) < fechaActual);
-    this.citasFuturas = reservas.filter(reserva => new Date(reserva.fechaHora) >= fechaActual);
-  }
+    places.forEach(place => {
+      // Verificar que fechaHora no sea undefined
+      if (place.fechaHora) {
+        const citaTime = new Date(place.fechaHora).getTime();
 
-  obtenerReservasDesdeLocalStorage(): any[] {
-    const reservas: any[] = [];
-    const keys = Object.keys(localStorage);
-
-    for (const key of keys) {
-      if (key.startsWith('reserva_')) {
-        const reserva = JSON.parse(localStorage.getItem(key) || '{}');
-        reservas.push(reserva);
+        if (citaTime < now) {
+          this.citasAnteriores.push(place);
+        } else {
+          this.citasFuturas.push(place);
+        }
+      } else {
+        console.warn(`La cita con nombre ${place.nombre} no tiene una fecha y hora válida.`);
       }
-    }
+    });
+  }
 
-    return reservas;
+  async borrarCita(place: Place) {
+    const response = await this.placesService.deletePlace(place);
+    console.log(response);
   }
 }

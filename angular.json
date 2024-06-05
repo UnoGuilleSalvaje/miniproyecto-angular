@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MiniProyecto2_Angular": {
+    "proyectofinal": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MiniProyecto2_Angular:build:production"
+              "buildTarget": "proyectofinal:build:production"
             },
             "development": {
-              "buildTarget": "MiniProyecto2_Angular:build:development"
+              "buildTarget": "proyectofinal:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "MiniProyecto2_Angular:build"
+            "buildTarget": "proyectofinal:build"
           }
         },
         "test": {
