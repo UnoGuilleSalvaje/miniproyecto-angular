@@ -1,6 +1,7 @@
 <marquee width="100%" direction="left">
   <span><b>StayInn</b> - Donde cada viaje se convierte en un recuerdo especial</span>
  </marquee>
+ 
 <nav class="navbar">
     <ul class="navbar__menu">
       <li class="navbar__item">
@@ -34,6 +35,15 @@
           </div>
         </div>
       </li>
+
+
+      <li class="navbar__item">
+        <a (click)="onClick()" class="navbar__link">
+          <i class="fas fa-sign-out-alt"></i> <!-- Icono de logout -->
+          <span>Logout</span>
+        </a>
+      </li>
+
     </ul>
   </nav>
   

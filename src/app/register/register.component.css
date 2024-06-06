@@ -1,0 +1,92 @@
+body {
+    background-color: #171717;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form {
+    background-color: rgba(86, 86, 86, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    animation: formFade 1s ease-in-out;
+}
+
+@keyframes formFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #8c8c8c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 40px);
+    padding: 15px;
+    margin-bottom: 25px;
+    border: 2px solid #636363;
+    border-radius: 8px;
+    background-color: #171717;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #565656;
+    box-shadow: 0 0 10px rgba(86, 86, 86, 0.5);
+}
+
+button {
+    background-color: #565656;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: #636363;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    background-color: #565656;
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+input::placeholder {
+    color: #8c8c8c;
+    opacity: 0.7;
+}

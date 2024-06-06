@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,10 +24,21 @@ export class NavbarComponent {
     body.appendChild(script);
   }
 
+  phoneNumber: string = ''; // Asegúrate de asignar el número de teléfono antes de usarlo
+
   // Paso de parámetros del nombre de la estancia a buscar
-  constructor(private router:Router) {}
+  constructor(private router:Router, private userservice: UserService) {}
+
+  onClick () {
+    this.userservice.logout()
+    .then(() => {
+      this.router.navigate(['/login']);
+    })
+    .catch((error: any) => console.log(error));
+  }
 
   buscarUnaEstancia(nombre:string) {
     this.router.navigate(['/buscador', nombre]);
   }
+  
 }
