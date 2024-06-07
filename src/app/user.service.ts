@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, User } from '@angular/fire/auth';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +11,7 @@ export class UserService {
   private reCaptchaVerifier: RecaptchaVerifier | undefined;
   private confirmationResult: ConfirmationResult | undefined;
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private firestore: Firestore) {}
 
   register({email, password}: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
@@ -57,5 +60,11 @@ export class UserService {
         console.error('Error confirming phone number', error);
         throw error;
       });
+  }
+
+
+  getUsers(): Observable<User[]> {
+    const usersRef = collection(this.firestore, 'users');
+    return collectionData(usersRef, { idField: 'email' }) as Observable<User[]>;
   }
 }

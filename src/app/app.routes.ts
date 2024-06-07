@@ -11,6 +11,7 @@ import { FelicitarComponent } from '../app/inicio/felicitar/felicitar.component'
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { MostrarComponent } from './mostrar/mostrar.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -25,5 +26,7 @@ export const routes: Routes = [
     {path: 'felicitar', component: FelicitarComponent},
     {path: 'register', component: RegisterComponent},
     ({path: 'login', component: LoginComponent}),
+    {path: 'main', component: InicioComponent},
+    {path: 'mostrar', component: MostrarComponent},
     {path: '**', redirectTo: 'inicio'}
 ];

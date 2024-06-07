@@ -20,7 +20,7 @@ body {
     justify-content: center;
     height: 3.5rem;
     width: 5.5rem;
-    color: #f4f4f4;
+    color: #f4f4f4; 
     transition: 250ms ease all; }
     .navbar__link span {
       position: absolute;
@@ -29,13 +29,13 @@ body {
       margin-left: 1rem;
       opacity: 0;
       pointer-events: none;
-      color: #406ff3;
-      background: #fff;
+      color: #05d9e2;
+      background: #ffffff16;
       padding: 0.75rem;
       transition: 250ms ease all;
       border-radius: 17.5px; }
     .navbar__link:hover {
-      color: #fff; }
+      color: #05dbe2; }
     .navbar:not(:hover) .navbar__link:focus span, .navbar__link:hover span {
       opacity: 1;
       transform: translate(0); }
@@ -1012,5 +1012,16 @@ a {
 }
 
       
+marquee {
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+span {
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
       

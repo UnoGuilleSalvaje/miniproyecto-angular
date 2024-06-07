@@ -1,0 +1,20 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Identificador</th>
+                <th scope="col">Proveedores</th>
+                <th scope="col">Fecha de creacion</th>
+                <th scope="col">Fecha de acceso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of usuarios | async">
+                <td>{{ user.data.identificador }}</td>
+                <td>{{ user.data.proveedor }}</td>
+                <td>{{ user.data.fechaCreacion }}</td>
+                <td>{{ user.data.fechaAcceso }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -13,6 +13,7 @@ import { FelicitarComponent } from './app/inicio/felicitar/felicitar.component';
 import { LoginComponent } from './src/app/login/login.component';
 import { MainComponent } from './src/app/main/main.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { MostrarComponent } from './src/app/mostrar/mostrar.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -28,5 +29,6 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
     {path: 'main', component: MainComponent},
+    {path: 'mostrar', component: MostrarComponent},
     {path: '**', redirectTo: 'inicio'}
 ];

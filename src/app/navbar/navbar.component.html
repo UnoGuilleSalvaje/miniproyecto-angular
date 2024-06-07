@@ -38,6 +38,20 @@
 
 
       <li class="navbar__item">
+        <a [routerLink]="['/login']" class="navbar__link">
+          <i class="fas fa-sign-in-alt"></i> <!-- Icono de login -->
+          <span>Login</span>
+        </a>
+      </li>
+
+      <li class="navbar__item">
+        <a [routerLink]="['/register']" class="navbar__link">
+          <i class="fas fa-user-plus"></i> <!-- Icono de registro -->
+          <span>Register</span>
+        </a>
+      </li>
+
+      <li class="navbar__item">
         <a (click)="onClick()" class="navbar__link">
           <i class="fas fa-sign-out-alt"></i> <!-- Icono de logout -->
           <span>Logout</span>

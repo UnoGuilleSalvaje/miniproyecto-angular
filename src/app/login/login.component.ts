@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.formLogin = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.formLogin.value)
         .then(response => {
           console.log(response);
+          this.router.navigate(['/inicio']);
         })
         .catch(error => console.log(error));
 
@@ -60,6 +62,7 @@ export class LoginComponent implements OnInit {
     this.userService.confirmPhoneNumber(otp)
       .then(() => {
         console.log('Login successful');
+        this.router.navigate(['/main']);
       })
       .catch((error: any) => console.error('Error during OTP confirmation', error));
   }
