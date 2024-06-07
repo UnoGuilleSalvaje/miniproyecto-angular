@@ -27,13 +27,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.formLogin.valid) {
+
       this.userService.login(this.formLogin.value)
         .then(response => {
           console.log(response);
         })
         .catch(error => console.log(error));
-    }
+
   }
 
   onClick(): void {

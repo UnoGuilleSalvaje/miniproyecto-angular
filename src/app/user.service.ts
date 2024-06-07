@@ -23,7 +23,7 @@ export class UserService {
   }
 
   initializeRecaptchaVerifier(containerId: string): void {
-    if (!this.reCaptchaVerifier) {
+    if (!this.reCaptchaVerifier) { //Si el recaptcha no ha sido inicializado
       this.reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', {'size': 'invisible'});
     }
   }
