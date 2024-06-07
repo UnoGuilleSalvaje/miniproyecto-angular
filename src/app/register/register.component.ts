@@ -16,6 +16,7 @@ export class RegisterComponent {
   formReg: FormGroup;
   constructor(private userService: UserService, private router: Router) {
     this.formReg = new FormGroup({
+      nombre: new FormControl(),
       email: new FormControl(),
       password: new FormControl()
     });
@@ -28,7 +29,7 @@ export class RegisterComponent {
     this.userService.register(this.formReg.value) //this.formReg.value tiene el email y el password
     .then( response => { //response es la respuesta que nos devuelve firebase
       console.log(response);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/inicio']);
     })
     .catch(error => console.log(error));
   }

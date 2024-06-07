@@ -58,6 +58,7 @@ label {
 /* Estilo de los inputs */
 input[type="email"],
 input[type="password"],
+input[type="text"],
 input.form-control {
     width: calc(100% - 40px); /* Asegura que el input se ajuste al contenedor */
     padding: 15px;
@@ -73,6 +74,7 @@ input.form-control {
 
 input[type="email"]:focus,
 input[type="password"]:focus,
+input[type="text"]:focus,
 input.form-control:focus {
     border-color: #565656;
     outline: none;

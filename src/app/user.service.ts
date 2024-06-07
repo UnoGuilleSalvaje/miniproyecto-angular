@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, User } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, User, getAuth } from '@angular/fire/auth';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 
 
 @Injectable({
@@ -10,14 +12,22 @@ import { Observable } from 'rxjs';
 export class UserService {
   private reCaptchaVerifier: RecaptchaVerifier | undefined;
   private confirmationResult: ConfirmationResult | undefined;
+  
+  private apiUrl = 'http://localhost:3001/api/users'; // URL de la API del servidor
 
-  constructor(private auth: Auth, private firestore: Firestore) {}
+  constructor(private auth: Auth, private firestore: Firestore, private http: HttpClient) {
+    
+  }  
 
-  register({email, password}: any) {
+  getAllUsers(): Observable<any> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+  register({name, email, password}: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
-  login({email, password}: any) {
+  login({name, email, password}: any) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
@@ -62,9 +72,7 @@ export class UserService {
       });
   }
 
+  
 
-  getUsers(): Observable<User[]> {
-    const usersRef = collection(this.firestore, 'users');
-    return collectionData(usersRef, { idField: 'email' }) as Observable<User[]>;
-  }
 }
+

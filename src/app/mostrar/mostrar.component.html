@@ -1,20 +1,21 @@
-<div class="container">
-    <table class="table">
+<body>
+    <h1 style="position: absolute; margin-top: -600px">Usuarios Registrados</h1>
+    <table class="user-table">
         <thead>
-            <tr>
-                <th scope="col">Identificador</th>
-                <th scope="col">Proveedores</th>
-                <th scope="col">Fecha de creacion</th>
-                <th scope="col">Fecha de acceso</th>
-            </tr>
+          <tr>
+            <th>UID</th>
+            <th>Email</th>
+            <th>Telefono</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of usuarios | async">
-                <td>{{ user.data.identificador }}</td>
-                <td>{{ user.data.proveedor }}</td>
-                <td>{{ user.data.fechaCreacion }}</td>
-                <td>{{ user.data.fechaAcceso }}</td>
+          @for (user of users; track user; let i = $index)  {
+            <tr>
+              <td>{{ user.uid }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phoneNumber }}</td>
             </tr>
+          }
         </tbody>
-    </table>
-</div>
+      </table>    
+</body>
