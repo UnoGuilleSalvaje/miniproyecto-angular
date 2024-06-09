@@ -71,7 +71,7 @@ export class FormularioComponent implements OnInit {
           if (fechaHoraSeleccionada < currentDate) {
               setTimeout(() => {
                 Swal.fire('Error', 'La fecha y hora seleccionadas ya pasaron.', 'error');
-              }, 2000);
+              }, 1000);
               return { pastDate: true }; // Fecha pasada
           }
 

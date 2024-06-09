@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, User, getAuth } from '@angular/fire/auth';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, addDoc, doc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -23,9 +23,25 @@ export class UserService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  register({name, email, password}: any) {
-    return createUserWithEmailAndPassword(this.auth, email, password);
+  async register({ nombre, usuario, email, password }: any) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      const user = userCredential.user;
+
+      // Guarda los datos adicionales en Firestore
+      await setDoc(doc(this.firestore, 'users', user.uid), {
+        uid: user.uid,
+        nombre: nombre,
+        usuario: usuario,
+        email: email
+      });
+
+      return userCredential;
+    } catch (error) {
+      throw error;
+    }
   }
+
 
   login({name, email, password}: any) {
     return signInWithEmailAndPassword(this.auth, email, password);
