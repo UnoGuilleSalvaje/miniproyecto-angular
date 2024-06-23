@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, User, getAuth } from '@angular/fire/auth';
-import { Firestore, collection, collectionData, addDoc, doc, setDoc } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-
-
+import {
+  Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signOut, RecaptchaVerifier, signInWithPhoneNumber,
+  ConfirmationResult, User, onAuthStateChanged
+} from '@angular/fire/auth';
+import { Firestore, collection, collectionData, addDoc, doc, setDoc, getDoc } from '@angular/fire/firestore';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +14,19 @@ import { Observable } from 'rxjs';
 export class UserService {
   private reCaptchaVerifier: RecaptchaVerifier | undefined;
   private confirmationResult: ConfirmationResult | undefined;
-  
   private apiUrl = 'http://localhost:3001/api/users'; // URL de la API del servidor
+  private authState = new BehaviorSubject<boolean>(false);
 
   constructor(private auth: Auth, private firestore: Firestore, private http: HttpClient) {
-    
-  }  
+    onAuthStateChanged(this.auth, user => {
+      this.authState.next(!!user);
+    });
+  }
+
+  // Comprobar si el usuario está autenticado
+  isAuthenticated(): Observable<boolean> {
+    return this.authState.asObservable();
+  }
 
   getAllUsers(): Observable<any> {
     return this.http.get<any[]>(this.apiUrl);
@@ -28,12 +37,13 @@ export class UserService {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
       const user = userCredential.user;
 
-      // Guarda los datos adicionales en Firestore
+      // Guarda los datos adicionales y el rol en Firestore
       await setDoc(doc(this.firestore, 'users', user.uid), {
         uid: user.uid,
         nombre: nombre,
         usuario: usuario,
-        email: email
+        email: email,
+        role: 'user' // Asigna el rol 'user' por defecto
       });
 
       return userCredential;
@@ -42,8 +52,7 @@ export class UserService {
     }
   }
 
-
-  login({name, email, password}: any) {
+  login({ email, password }: any) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
@@ -52,14 +61,14 @@ export class UserService {
   }
 
   initializeRecaptchaVerifier(containerId: string): void {
-    if (!this.reCaptchaVerifier) { //Si el recaptcha no ha sido inicializado
-      this.reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', {'size': 'invisible'});
+    if (!this.reCaptchaVerifier) {
+      this.reCaptchaVerifier = new RecaptchaVerifier(this.auth, containerId, {'size': 'invisible'});
     }
   }
 
   loginWithPhoneNumber(phoneNumber: string): Promise<ConfirmationResult | void> {
     if (!this.reCaptchaVerifier) {
-      console.error('RecaptchaVerifier is not initialized');
+      console.error('Error: RecaptchaVerifier is not initialized');
       return Promise.reject('RecaptchaVerifier is not initialized');
     }
 
@@ -68,7 +77,7 @@ export class UserService {
         this.confirmationResult = confirmationResult;
         return confirmationResult;
       })
-      .catch((error: any) => {
+      .catch(error => {
         console.error('Error during signInWithPhoneNumber', error);
         throw error;
       });
@@ -82,13 +91,19 @@ export class UserService {
 
     return this.confirmationResult.confirm(code)
       .then(() => console.log('Phone number confirmed successfully'))
-      .catch((error: any) => {
+      .catch(error => {
         console.error('Error confirming phone number', error);
         throw error;
       });
   }
 
-  
-
+  // Verificar si el usuario tiene el rol de admin
+  async isAdmin(user: User): Promise<boolean> {
+    const userDoc = await getDoc(doc(this.firestore, 'users', user.uid));
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      return userData?.['role'] === 'admin';
+    }
+    return false;
+  }
 }
-

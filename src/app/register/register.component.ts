@@ -38,7 +38,10 @@ export class RegisterComponent {
       // Campo contraseña: requerido
       password: new FormControl('', Validators.required),
       // Campo confirmación de contraseña: requerido
-      confirmPassword: new FormControl('', Validators.required)
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
     }, { validators: this.passwordsMatchValidator });
   }
 
@@ -179,7 +182,7 @@ export class RegisterComponent {
       } else if (this.formReg.get('password')?.errors?.['minlength']) {
         Swal.fire({
           title: 'Error',
-          text: 'La contraseña debe tener al menos 8 caracteres.',
+          text: 'La contraseña debe tener al menos 6 caracteres.',
           icon: 'error',
           confirmButtonText: 'Aceptar',
           background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
