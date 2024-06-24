@@ -110,7 +110,9 @@ hr {
 }
 
 .input-group-prepend {
-   display: flex;
+   text-align: center; /* Centro el contenido del contenedor */
+   width: 100%; /* Asegúrate de que el contenedor tenga un ancho */
+
 }
 
 .input-group-prepend button {
@@ -124,6 +126,7 @@ hr {
    transition: background-color 0.3s, box-shadow 0.2s;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+   width: 100%;
 }
 
 .input-group-prepend button:hover {
@@ -146,3 +149,4 @@ hr {
        padding: 20px;
    }
 }
+

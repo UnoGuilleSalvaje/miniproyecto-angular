@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
+  showPhoneLogin = signal(false); // Usamos signal para controlar la visibilidad
 
   constructor(private userService: UserService, private router: Router) {
     this.formLogin = new FormGroup({
@@ -63,16 +64,18 @@ export class LoginComponent implements OnInit {
   onClick(): void {
     const phoneNumber = this.formLogin.get('phoneNumber')?.value;
     if (!phoneNumber) {
+      console.error('Phone number is required');
       Swal.fire('Error', 'El número de teléfono es obligatorio.', 'error');
       return;
     }
 
     this.userService.loginWithPhoneNumber(phoneNumber)
       .then(() => {
+        console.log('OTP sent to phone');
         Swal.fire('OTP Enviado', 'Se ha enviado un OTP a su número de teléfono.', 'info');
       })
       .catch((error: any) => {
-        console.error('Error during login with phone number', error);
+        console.error('Error during login with phone number :c', error);
         Swal.fire('Error', 'Hubo un problema al enviar el OTP.', 'error');
       });
   }
@@ -80,6 +83,7 @@ export class LoginComponent implements OnInit {
   onVerifyOTP(): void {
     const otp = this.formLogin.get('otp')?.value;
     if (!otp) {
+      console.error('OTP is required');
       Swal.fire('Error', 'El código OTP es obligatorio.', 'error');
       return;
     }
@@ -97,5 +101,10 @@ export class LoginComponent implements OnInit {
           Swal.fire('Error', 'Hubo un problema con la confirmación del OTP.', 'error');
         }
       });
+  }
+
+  // Método para alternar la visibilidad de la autenticación por teléfono
+  togglePhoneLogin(): void {
+    this.showPhoneLogin.set(!this.showPhoneLogin());
   }
 }
