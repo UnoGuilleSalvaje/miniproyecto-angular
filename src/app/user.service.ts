@@ -106,4 +106,19 @@ export class UserService {
     }
     return false;
   }
+  
+  // Obtener el nombre del usuario desde Firestore
+  async getUserName(user: User): Promise<string> {
+    try {
+      const userDoc = await getDoc(doc(this.firestore, 'users', user.uid));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        return userData?.['nombre'] || '';
+      }
+      return '';
+    } catch (error) {
+      console.error('Error getting user name', error);
+      return '';
+    }
+  }
 }

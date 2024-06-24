@@ -1,5 +1,5 @@
 <body>
-  <div class="container" style="margin-top: 60px;">
+  <div class="container" style="margin-top: 220px; margin-bottom: 100px;">
     <h1>Iniciar sesión</h1>
     
     <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
@@ -46,7 +46,8 @@
             <label for="otp">Código de verificación:</label>
             <input type="text" formControlName="otp" id="otp" class="form-control">
           </div>
-          <button class="btn btn-info" type="button" (click)="onVerifyOTP()">Verificar OTP</button>
+          <button class="btn btn-info" type="button" (click)="onVerifyOTP()">Verificar código</button>
+          
         </form>
       </div>
     }
