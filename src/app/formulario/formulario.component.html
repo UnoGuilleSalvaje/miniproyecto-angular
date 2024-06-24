@@ -69,6 +69,55 @@
                           </div>
                       </td>
                   </tr>
+
+
+
+                  <tr>
+                    <td>
+                        <div class="form-group" style="padding-right: 20px;">
+                            <label>Tipo de Habitación:</label><br>
+                            <label>
+                                <input type="radio" name="tipoHabitacion" formControlName="tipoHabitacion" value="simple" /> Simple
+                            </label>
+                            <label>
+                                <input type="radio" name="tipoHabitacion" formControlName="tipoHabitacion" value="doble" /> Doble
+                            </label>
+                            <label>
+                                <input type="radio" name="tipoHabitacion" formControlName="tipoHabitacion" value="suite" /> Suite
+                            </label>
+                        </div>
+                    </td>
+                    
+                    <td>
+                        <div class="form-group">
+                            <label>Servicios Adicionales:</label><br>
+                            <label>
+                                <input type="checkbox" formControlName="servicioDesayuno" /> Desayuno
+                            </label>
+                            <label>
+                                <input type="checkbox" formControlName="servicioTraslado" /> Traslado
+                            </label>
+                            <label>
+                                <input type="checkbox" formControlName="servicioSpa" /> Spa
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                  <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="personas">Número de personas:</label>
+                            <input id="personas" list="personasOptions" formControlName="personas" />
+                            <datalist id="personasOptions">
+                              <option value="Una Persona"></option>
+                              <option value="Dos Personas"></option>
+                              <option value="Entre Tres y Cuatro Personas"></option>
+                              <option value="Más de Cinco Personas"></option>
+                            </datalist>
+                        </div>
+                    </td>
+                </tr>
+                
               </table>
               <!-- guardar -->
               <div class="button-group">

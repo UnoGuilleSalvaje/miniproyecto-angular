@@ -321,3 +321,48 @@ p {
     transform: scale(0.98);
     box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
  }
+
+ .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  animation: form-group-fade-in 0.5s ease-in-out;
+}
+
+@keyframes form-group-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #03e9f4;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.0);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type="radio"]:hover,
+input[type="checkbox"]:hover {
+  transform: scale(1.4);
+}
+
+.form-group label {
+  margin-right: 10px;
+}
+
+.form-group label:first-child {
+  font-weight: bold;
+}
