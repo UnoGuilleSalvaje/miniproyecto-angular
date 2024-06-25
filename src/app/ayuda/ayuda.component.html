@@ -1,0 +1,61 @@
+<body>
+    <section id="sets-7" class="page__component page__component-- page__component--sets  ">
+        <div class="sets base_sets half ">
+            <div class="sets__hero">
+                <div class="sets__bg__container">
+                    <figure class="img__wrapper sets__background__wrapper">
+                        <div class="built__background built__background--single sets__background use-vars"
+                            style="background-image:url(%27https_/cdn.marvel.com/content/1x/new_com_20231115_set_01.html)">
+                        </div>
+                    </figure>
+                </div>
+                <div class="mobile_tab"><button class="baseCarousel__arrow base_sets__arrow left "
+                        role="button" tabindex="0"><svg viewBox="10 0 50 110" width="30px">
+                            <path d="M40 35 L20 55 L40 75" class="arrow"></path>
+                        </svg></button>
+                    <div class="tabs-mobile"></div><button
+                        class="baseCarousel__arrow base_sets__arrow right" role="button"
+                        tabindex="0"><svg viewBox="0 0 50 110" width="30px">
+                            <path d="M20,75,40,55,20,35" class="arrow"></path>
+                        </svg></button>
+                </div>
+                <div class="sets__main">
+    
+            <div class="sets__container" aria-live="polite" role="region">
+                <div class="sets__eyebrow">Atención al Cliente de StayInn</div>
+                <div class="sets__title" style="color: white;">¿En qué podemos ayudarte hoy?</div>
+                <div class="sets__description" style="color: rgb(157, 154, 154);">
+                    En StayInn, nos esforzamos por brindarte la mejor experiencia durante tu estancia. ¿Tienes preguntas sobre nuestras propiedades, el proceso de reserva, o necesitas ayuda con algún otro asunto? ¡No dudes en contactarnos! Nuestro equipo de atención al cliente está aquí para asistirte en todo momento.
+                </div>
+              
+    
+    
+                            
+                                    
+                    </div>
+
+                    <img style="padding-top: 150px;" class="img-black-original" src="https://hold.mx/blog/wp-content/uploads/2024/02/Call-center.png" alt="">
+                </div>
+            </div>
+            <div class="tabs__div"></div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <br>
+        <h2 class="sets__title">Preguntas Frecuentes</h2>
+        
+        <div class="accordion">
+          @for (faq of faqs; track faq.id) {
+            <div class="panel">
+              <div class="panel-header" (click)="togglePanel(faq.id)">
+                {{ faq.question }}
+              </div>
+              <div class="panel-body" [class.active]="faq.isOpen">
+                {{ faq.answer }}
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+</body>
