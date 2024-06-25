@@ -1,118 +1,83 @@
 <body>
+  <div class="table-container">
     <h2>Citas Anteriores</h2>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Fecha y Hora</th>
-      <th>Nombre</th>
-      <th>Teléfono</th>
-      <th>Correo</th>
-      <th>Estancia</th>
-      <th>Días</th>
-      <th>Precio</th>
-      <th>Dirección</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (cita of citasAnteriores; track cita; let i = $index) {
-      <tr>
-        <td>{{ cita.id }}</td>
-        <td>{{ cita.fechaHora }}</td>
-        <td>{{ cita.nombre }}</td>
-        <td>{{ cita.telefono }}</td>
-        <td>{{ cita.correo }}</td>
-        <td>{{ cita.estancia.nombre }}</td>
-        <td>{{ cita.dias }}</td>
-        <td>{{ cita.estancia.precio }}</td>
-        <td>#{{ cita.estancia.direccion }}</td>
-        <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
-        @if (isAdmin()) {
-        <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
-        }
-      </tr>
-    }
-  </tbody>
-</table>
-
-<br><br><br><br>
-
-<h2>Citas Futuras</h2>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Fecha y Hora</th>
-      <th>Nombre</th>
-      <th>Teléfono</th>
-      <th>Correo</th>
-      <th>Estancia</th>
-      <th>Días</th>
-      <th>Precio</th>
-      <th>Dirección</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (cita of citasFuturas; track cita; let i = $index) {
-      <tr>
-        <td>{{ cita.id }}</td>
-        <td>{{ cita.fechaHora }}</td>
-        <td>{{ cita.nombre }}</td>
-        <td>{{ cita.telefono }}</td>
-        <td>{{ cita.correo }}</td>
-        <td>{{ cita.estancia.nombre }}</td>
-        <td>{{ cita.dias }}</td>
-        <td>{{ cita.estancia.precio }}</td>
-        <td>#{{ cita.estancia.direccion }}</td>
-        <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
-        @if (isAdmin()) {
-        <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
-        }
-      </tr>
-    }
-  </tbody>
-</table>
-
-<br><br><br>
-
-<!-- <div class="accordion" id="accordionExample" style="padding-left: 80px;">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        ¡Reserva ahora en StayInn y disfruta de tu escapada soñada!
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show bg-dark text-light" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>Regístrate ahora en StayInn y reserva tu estancia ideal para unas vacaciones inolvidables.</strong> Descubre una amplia selección de alojamientos en destinos de ensueño. Desde acogedores apartamentos en la ciudad hasta lujosas villas frente al mar, StayInn tiene todo lo que necesitas para una experiencia única. Aprovecha nuestras ofertas exclusivas y comienza a planificar tu próxima escapada hoy mismo.
-      </div>
+    <div class="table-responsive">
+      <table class="citas-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha y Hora</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Estancia</th>
+            <th>Días</th>
+            <th>Precio</th>
+            <th>Dirección</th>
+            <th>Imagen</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cita of citasAnteriores; track cita; let i = $index) {
+            <tr>
+              <td data-label="ID">{{ cita.id }}</td>
+              <td data-label="Fecha y Hora">{{ cita.fechaHora }}</td>
+              <td data-label="Nombre">{{ cita.nombre }}</td>
+              <td data-label="Teléfono">{{ cita.telefono }}</td>
+              <td data-label="Correo">{{ cita.correo }}</td>
+              <td data-label="Estancia">{{ cita.estancia.nombre }}</td>
+              <td data-label="Días">{{ cita.dias }}</td>
+              <td data-label="Precio">{{ cita.estancia.precio }}</td>
+              <td data-label="Dirección">#{{ cita.estancia.direccion }}</td>
+              <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+              <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button bg-dark text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        ¿Por qué reservar con StayInn?
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse bg-dark text-light" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>Descubre las ventajas de reservar con StayInn:</strong> Disfruta de una amplia variedad de alojamientos de alta calidad. Encuentra opciones para todos los presupuestos y gustos. Reserva con total tranquilidad gracias a nuestro sistema de seguridad y protección al cliente. Obtén acceso a ofertas exclusivas y descuentos especiales para miembros. ¡Únete a la comunidad de StayInn hoy mismo y empieza a explorar el mundo con nosotros!
-      </div>
+  
+  <div class="table-container">
+    <h2>Citas Futuras</h2>
+    <div class="table-responsive">
+      <table class="citas-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha y Hora</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Estancia</th>
+            <th>Días</th>
+            <th>Precio</th>
+            <th>Dirección</th>
+            <th>Imagen</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cita of citasFuturas; track cita; let i = $index) {
+            <tr>
+              <td data-label="ID">{{ cita.id }}</td>
+              <td data-label="Fecha y Hora">{{ cita.fechaHora }}</td>
+              <td data-label="Nombre">{{ cita.nombre }}</td>
+              <td data-label="Teléfono">{{ cita.telefono }}</td>
+              <td data-label="Correo">{{ cita.correo }}</td>
+              <td data-label="Estancia">{{ cita.estancia.nombre }}</td>
+              <td data-label="Días">{{ cita.dias }}</td>
+              <td data-label="Precio">{{ cita.estancia.precio }}</td>
+              <td data-label="Dirección">#{{ cita.estancia.direccion }}</td>
+              <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+              <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button bg-dark text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        ¿Cómo reservar en StayInn?
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse bg-dark text-light" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>Reservar tu alojamiento en StayInn es fácil y rápido:</strong> Primero, crea una cuenta gratuita en nuestro sitio web o aplicación móvil. Luego, busca y selecciona el alojamiento que mejor se adapte a tus necesidades y preferencias. Una vez que hayas encontrado tu lugar ideal, sigue los pasos para completar tu reserva y asegurar tu estancia. ¡Así de simple! En pocos minutos estarás listo para disfrutar de unas vacaciones inolvidables con StayInn.
-      </div>
-    </div>
-  </div>
-</div> -->
 
 
 </body>
