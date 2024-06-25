@@ -1024,4 +1024,37 @@ span {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-      
+.marquee {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: marquee 15s linear infinite; 
+}
+
+.marq {
+  position: absolute;
+  font-size: 20px;
+        background-color: #1f1f1f;
+        color: white;
+        padding: 6px 0;
+        width: 98%;
+
+        /* Centrar */
+        margin: 0 auto;
+
+        /* Margen */
+        margin-bottom: 10px;
+
+        /* Margen */
+        margin-left: 16px;
+        margin-right: 10px;
+
+        /* Bordes redondeados*/
+        border-radius: 10px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); opacity: 1; }
+  80% { opacity: 0.5; }
+  100% { transform: translateX(0%); opacity: 0; }
+}

@@ -1,0 +1,73 @@
+<body>
+    <h2>Citas Anteriores de {{ userName() }}</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha y Hora</th>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+      <th>Estancia</th>
+      <th>Días</th>
+      <th>Precio</th>
+      <th>Dirección</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (cita of citasAnteriores; track cita; let i = $index) {
+      <tr>
+        <td>{{ cita.id }}</td>
+        <td>{{ cita.fechaHora }}</td>
+        <td>{{ cita.nombre }}</td>
+        <td>{{ cita.telefono }}</td>
+        <td>{{ cita.correo }}</td>
+        <td>{{ cita.estancia.nombre }}</td>
+        <td>{{ cita.dias }}</td>
+        <td>{{ cita.estancia.precio }}</td>
+        <td>#{{ cita.estancia.direccion }}</td>
+        <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+        <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<br><br><br><br>
+
+<h2 style="padding-top: 120px;">Citas Futuras de {{ userName() }}</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha y Hora</th>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+      <th>Estancia</th>
+      <th>Días</th>
+      <th>Precio</th>
+      <th>Dirección</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (cita of citasFuturas; track cita; let i = $index) {
+      <tr>
+        <td>{{ cita.id }}</td>
+        <td>{{ cita.fechaHora }}</td>
+        <td>{{ cita.nombre }}</td>
+        <td>{{ cita.telefono }}</td>
+        <td>{{ cita.correo }}</td>
+        <td>{{ cita.estancia.nombre }}</td>
+        <td>{{ cita.dias }}</td>
+        <td>{{ cita.estancia.precio }}</td>
+        <td>#{{ cita.estancia.direccion }}</td>
+        <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+        <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+
+</body>

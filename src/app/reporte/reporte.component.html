@@ -1,5 +1,5 @@
 <body>
-    <h2 style="padding-top: 40px;">Citas Anteriores</h2>
+    <h2>Citas Anteriores</h2>
 <table>
   <thead>
     <tr>
@@ -27,7 +27,9 @@
         <td>{{ cita.estancia.precio }}</td>
         <td>#{{ cita.estancia.direccion }}</td>
         <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+        @if (isAdmin()) {
         <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+        }
       </tr>
     }
   </tbody>
@@ -63,7 +65,9 @@
         <td>{{ cita.estancia.precio }}</td>
         <td>#{{ cita.estancia.direccion }}</td>
         <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+        @if (isAdmin()) {
         <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+        }
       </tr>
     }
   </tbody>

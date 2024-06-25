@@ -25,13 +25,14 @@
   }
   
   h1 {
-    padding: 5px 50px 5px 90px;
-    font-size: 2.5rem;
-    font-family: 'Montserrat';
-    font-weight: normal;
-    color: #848484;
+  
+    color: #fff;
     text-align: center;
-    margin: 2rem 0;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
   }
   h3 {
     color: blanchedalmond;
@@ -75,4 +76,5 @@
   mat-card-title {
     color: white;
   }
+  
   
