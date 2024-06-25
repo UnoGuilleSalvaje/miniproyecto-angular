@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { PlacesService } from '../services/places.service';
 import { UserService } from '../user.service';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
+import { Firestore, collection, getDocs, query, where } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-formulario',
@@ -26,6 +27,8 @@ export class FormularioComponent implements OnInit {
   estanciaSeleccionada: Estancia | null = null;
   estanciaSeleccionadaIndex: number | null = null;
 
+  fechasOcupadas: Date[] = [];
+
   isLoggedIn = signal(false); // Signal para el estado de autenticación
   userName = signal(''); // Signal para el nombre del usuario
   isAdmin = signal(false);
@@ -38,7 +41,8 @@ export class FormularioComponent implements OnInit {
     private router: Router,
     public estanciasService: EstanciasService,
     private userService: UserService,
-    private auth: Auth
+    private auth: Auth,
+    private firestore: Firestore
   ) {
     // Inicializa el formulario con los campos y las validaciones requeridas
     this.formularioForm = this.fb.group({
@@ -52,8 +56,13 @@ export class FormularioComponent implements OnInit {
       tipoHabitacion: ['', Validators.required],
       servicioDesayuno: [false],
       servicioTraslado: [false],
-      servicioSpa: [false]
+      servicioSpa: [false],
     });
+
+    this.formularioForm.get('fechaHora')?.setValidators([
+      Validators.required,
+      this.validateDateTimeNotOccupied.bind(this)
+    ]);
 
     onAuthStateChanged(this.auth, async (user) => {
       const isLoggedIn = !!user;
@@ -102,6 +111,43 @@ export class FormularioComponent implements OnInit {
     }
     this.recuperarDatos();
     this.miEstancia = this.estanciasService.getEstancias();
+    this.cargarFechasOcupadas();
+  }
+  
+
+  async cargarFechasOcupadas() {
+    if (!this.estanciaSeleccionada) {
+      console.log("No hay estancia seleccionada");
+      return;
+    }
+
+    this.fechasOcupadas = [];
+    const placesRef = collection(this.firestore, 'places');
+    
+    try {
+      // Crea una consulta para filtrar por la estancia seleccionada
+      const q = query(placesRef, where("estancia.id", "==", this.estanciaSeleccionada.id));
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data['fechaHora'] && data['dias']) {
+          const fechaInicio = new Date(data['fechaHora']);
+          const diasEstancia = Number(data['dias']);
+
+          for (let i = 0; i < diasEstancia; i++) {
+            const fecha = new Date(fechaInicio);
+            fecha.setDate(fecha.getDate() + i);
+            this.fechasOcupadas.push(fecha);
+          }
+        }
+      });
+
+      console.log("Fechas ocupadas cargadas para la estancia:", this.estanciaSeleccionada.id);
+    } catch (error) {
+      console.error("Error al cargar las fechas ocupadas:", error);
+      Swal.fire('Error', 'No se pudieron cargar las fechas ocupadas para esta estancia.', 'error');
+    }
   }
 
   private loadScript(scriptUrl: string) {
@@ -116,59 +162,126 @@ export class FormularioComponent implements OnInit {
 
   validateDateTimeNotOccupied(control: any) {
     const fechaHora = control.value;
+    if (!fechaHora) return null;
 
-    if (fechaHora) {
-      const fechaHoraSeleccionada = new Date(fechaHora);
-      const currentDate = new Date();
-      const reservas = JSON.parse(localStorage.getItem('reservas') || '[]');
+    const fechaSeleccionada = new Date(fechaHora);
+    const currentDate = new Date();
 
-      if (fechaHoraSeleccionada < currentDate) {
-        setTimeout(() => {
-          Swal.fire('Error', 'La fecha y hora seleccionadas ya pasaron.', 'error');
-        }, 1000);
-        return { pastDate: true };
-      }
-
-      for (const reserva of reservas) {
-        const fechaHoraReservaGuardada = new Date(reserva.fechaHora);
-        const estanciaReservaGuardada = reserva.estancia;
-
-        if (this.estanciaSeleccionada && this.estanciaSeleccionada.nombre === estanciaReservaGuardada.nombre) {
-          const fechaReservaExistente = new Date(fechaHoraReservaGuardada.getFullYear(), fechaHoraReservaGuardada.getMonth(), fechaHoraReservaGuardada.getDate());
-          const fechaReservaSeleccionada = new Date(fechaHoraSeleccionada.getFullYear(), fechaHoraSeleccionada.getMonth(), fechaHoraSeleccionada.getDate());
-
-          if (fechaReservaExistente.getTime() === fechaReservaSeleccionada.getTime()) {
-            setTimeout(() => {
-              Swal.fire('Error', 'La estancia ya ha sido reservada para esa fecha.', 'error');
-            }, 2000);
-            return { occupied: true };
-          }
+    // Verificar si la fecha es pasada
+    if (fechaSeleccionada < currentDate) {
+      Swal.fire({
+        title: 'Error',
+        text: 'No puedes seleccionar una fecha que ya ha pasado.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+        background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
+        color: '#ffffff', // Color del texto
+        customClass: {
+          popup: 'swal2-elegant-popup',
+          title: 'swal2-elegant-title',
+          confirmButton: 'swal2-confirm-button-red', // Clase específica para botón rojo
+          icon: 'swal2-elegant-icon'
         }
+      });
+      return { pastDate: true };
+    }
+
+    // Verificar si la fecha está ocupada
+    const diasEstancia = this.formularioForm.get('dias')?.value || 1;
+    for (let i = 0; i < diasEstancia; i++) {
+      const fechaVerificar = new Date(fechaSeleccionada);
+      fechaVerificar.setDate(fechaVerificar.getDate() + i);
+      
+      if (this.fechasOcupadas.some(fecha => 
+        fecha.getFullYear() === fechaVerificar.getFullYear() &&
+        fecha.getMonth() === fechaVerificar.getMonth() &&
+        fecha.getDate() === fechaVerificar.getDate()
+      )) {
+        Swal.fire({
+          title: 'Error',
+          text: 'La fecha seleccionada o parte de tu estancia ya ha sido reservada.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+          background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
+          color: '#ffffff', // Color del texto
+          customClass: {
+            popup: 'swal2-elegant-popup',
+            title: 'swal2-elegant-title',
+            confirmButton: 'swal2-confirm-button-red', // Clase específica para botón rojo
+            icon: 'swal2-elegant-icon'
+          }
+        });
+        return { occupied: true };
       }
     }
+
     return null;
   }
 
   async guardarReservacion() {
-    const reservaKey = 'reserva_' + Date.now();
-  
     if (this.formularioForm.valid && this.estanciaSeleccionada) {
       const reserva = {
         ...this.formularioForm.value,
-        id: reservaKey,
         estancia: this.estanciaSeleccionada
       };
-  
+
       try {
-        const response = await this.placesService.addPlace(reserva);
-        console.log(response);
-        Swal.fire('¡Éxito!', 'Reservación guardada con éxito.', 'success');
+        // Añadir las nuevas fechas ocupadas
+        const fechaInicio = new Date(reserva.fechaHora);
+        for (let i = 0; i < reserva.dias; i++) {
+          const nuevaFecha = new Date(fechaInicio);
+          nuevaFecha.setDate(nuevaFecha.getDate() + i);
+          this.fechasOcupadas.push(nuevaFecha);
+        }
+
+        // Guardar la reserva en Firebase
+        await this.placesService.addPlace(reserva);
+        Swal.fire({
+          title: '!Éxito!',
+          text: 'Reservación guardada con éxito.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+          background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
+          color: '#ffffff', // Color del texto
+          customClass: {
+            popup: 'swal2-elegant-popup',
+            title: 'swal2-elegant-title',
+            confirmButton: 'swal2-confirm-button-green', // Clase específica para botón verde
+            icon: 'swal2-elegant-icon'
+          }
+        })
       } catch (error) {
         console.error(error);
-        Swal.fire('Error', 'Hubo un problema al guardar la reservación.', 'error');
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al guardar la reservación.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+          background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
+          color: '#ffffff', // Color del texto
+          customClass: {
+            popup: 'swal2-elegant-popup',
+            title: 'swal2-elegant-title',
+            confirmButton: 'swal2-confirm-button-red', // Clase específica para botón rojo
+            icon: 'swal2-elegant-icon'
+          }
+        });
       }
     } else {
-      Swal.fire('Error', 'El formulario no es válido o no se ha seleccionado una estancia.', 'error');
+      Swal.fire({
+        title: 'Error',
+        text: 'El formulario es inválido o no hay una estancia seleccionada.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+        background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
+        color: '#ffffff', // Color del texto
+        customClass: {
+          popup: 'swal2-elegant-popup',
+          title: 'swal2-elegant-title',
+          confirmButton: 'swal2-confirm-button-red', // Clase específica para botón rojo
+          icon: 'swal2-elegant-icon'
+        }
+      });
     }
   }
   
@@ -180,7 +293,20 @@ export class FormularioComponent implements OnInit {
       next: this.successRequest.bind(this),
       error: (err) => {
         console.log(err);
-        Swal.fire('Error', 'Hubo un problema al recuperar los datos.', 'error');
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al recuperar los datos.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+          background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
+          color: '#ffffff', // Color del texto
+          customClass: {
+            popup: 'swal2-elegant-popup',
+            title: 'swal2-elegant-title',
+            confirmButton: 'swal2-confirm-button-red', // Clase específica para botón rojo
+            icon: 'swal2-elegant-icon'
+          }
+        });
       }
     });
   }
@@ -193,14 +319,13 @@ export class FormularioComponent implements OnInit {
 
   seleccionarEstancia(index: number | null): void {
     if (index !== null) {
-      console.log("Estancia seleccionada:", this.miEstancia[index]);
       this.estanciaSeleccionada = this.miEstancia[index];
       this.estanciaSeleccionadaIndex = index;
-      console.log("Estancia seleccionada asignada:", this.estanciaSeleccionada);
+      this.cargarFechasOcupadas(); // Llama a cargar fechas cuando se selecciona una estancia
     } else {
-      console.log("Ninguna estancia seleccionada");
       this.estanciaSeleccionada = null;
       this.estanciaSeleccionadaIndex = null;
+      this.fechasOcupadas = []; // Limpia las fechas ocupadas si no hay estancia seleccionada
     }
   }
 }
