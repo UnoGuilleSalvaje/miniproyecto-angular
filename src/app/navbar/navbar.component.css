@@ -1058,3 +1058,51 @@ span {
   80% { opacity: 0.5; }
   100% { transform: translateX(0%); opacity: 0; }
 }
+
+/* Media queries para dispositivos móviles */
+@media screen and (max-width: 767px) {
+  .navbar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .navbar__link {
+    width: auto;
+    height: 3rem;
+    padding: 5px;
+  }
+
+  .navbar__link span {
+    display: none;
+  }
+
+  .navbar__menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .navbar__item:last-child:before {
+    display: none;
+  }
+
+  .marq {
+    margin-bottom: 60px; /* Ajusta este valor según sea necesario */
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+  .navbar__link {
+    padding: 0 0.5rem;
+  }
+}
