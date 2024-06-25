@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { RegistroComponent } from './registro/registro.component';
 import { RegisterComponent } from './src/app/register/register.component';
 import { InicioComponent } from './app/inicio/inicio.component';
 import { FormularioComponent } from './app/formulario/formulario.component';
@@ -13,6 +14,7 @@ import { LoginComponent } from './src/app/login/login.component';
 import { MainComponent } from './src/app/main/main.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { MostrarComponent } from './src/app/mostrar/mostrar.component';
+
 import { MisReservacionesComponent } from './src/app/mis-reservaciones/mis-reservaciones.component';
 import { AyudaComponent } from './src/app/ayuda/ayuda.component';
 
@@ -31,7 +33,9 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'main', component: MainComponent},
     {path: 'mostrar', component: MostrarComponent},
+
     {path: 'misreservaciones', component: MisReservacionesComponent},
     {path: 'ayuda', component: AyudaComponent},
+
     {path: '**', redirectTo: 'inicio'}
 ];
