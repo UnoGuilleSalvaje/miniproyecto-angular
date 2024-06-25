@@ -52,7 +52,7 @@ export class RegisterComponent {
       this.userService.register(this.formReg.value)
       .then(response => {
         console.log(response);
-        // Mostrar SweetAlert cuando las contraseñas coinciden
+        // Mostrar SweetAlert cuando el registro es exitoso
         Swal.fire({
           title: 'Registro exitoso',
           text: 'Tu cuenta ha sido creada correctamente.',
@@ -71,7 +71,25 @@ export class RegisterComponent {
           this.router.navigate(['/inicio']);
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          Swal.fire({
+            title: 'Error',
+            text: 'El correo electrónico ya está en uso. Por favor, usa otro correo.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            background: 'rgba(23, 23, 23, 0.9)', // Fondo translúcido
+            color: '#ffffff', // Color del texto
+            customClass: {
+              popup: 'swal2-elegant-popup',
+              title: 'swal2-elegant-title',
+              confirmButton: 'swal2-confirm-button-red', // Clase específica para botón rojo
+              icon: 'swal2-elegant-icon'
+            }
+          });
+        }
+      });
     } else {
       // Mostrar SweetAlerts para cada caso de validación no cumplida
       if (this.formReg.get('nombre')?.errors?.['required']) {
