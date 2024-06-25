@@ -5,13 +5,13 @@ import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-reporte',
+  selector: 'app-mis-reservaciones',
   standalone: true,
   imports: [],
-  templateUrl: './reporte.component.html',
-  styleUrl: './reporte.component.css'
+  templateUrl: './mis-reservaciones.component.html',
+  styleUrls: ['./mis-reservaciones.component.css']
 })
-export class ReporteComponent implements OnInit {
+export class MisReservacionesComponent implements OnInit {
   citasAnteriores: any[] = [];
   citasFuturas: any[] = [];
 
@@ -37,7 +37,9 @@ export class ReporteComponent implements OnInit {
         // Obtener el correo del usuario
         const userEmail = await this.userService.getUserEmail(user);
         this.userEmail.set(userEmail);
-        
+
+        // Cargar citas solo después de haber obtenido el nombre y el correo del usuario
+        this.cargarCitas();
       } else {
         // Resetear el estado de admin si no está autenticado
         this.isAdmin.set(false);
@@ -47,8 +49,10 @@ export class ReporteComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    //Firestore
+  ngOnInit(): void {}
+
+  cargarCitas() {
+    // Firestore
     this.placesService.getPlaces().subscribe((places: Place[]) => {
       console.log("Reporte Firebase: ", places);
       this.citasAnteriores = []; // Reiniciar el arreglo
@@ -56,23 +60,27 @@ export class ReporteComponent implements OnInit {
       this.categorizeCitas(places);
     });
   }
-  
 
   categorizeCitas(places: Place[]) {
     const now = new Date().getTime();
+    const userEmail = this.userEmail(); // Obtén el correo del usuario
+    const userName = this.userName(); // Obtén el nombre del usuario
 
     places.forEach(place => {
-      // Verificar que fechaHora no sea undefined
-      if (place.fechaHora) {
-        const citaTime = new Date(place.fechaHora).getTime();
+      // Verificar que la cita pertenece al usuario actual
+      if (place.correo === userEmail && place.nombre === userName) {
+        // Verificar que fechaHora no sea undefined
+        if (place.fechaHora) {
+          const citaTime = new Date(place.fechaHora).getTime();
 
-        if (citaTime < now) {
-          this.citasAnteriores.push(place);
+          if (citaTime < now) {
+            this.citasAnteriores.push(place);
+          } else {
+            this.citasFuturas.push(place);
+          }
         } else {
-          this.citasFuturas.push(place);
+          console.warn(`La cita con nombre ${place.nombre} no tiene una fecha y hora válida.`);
         }
-      } else {
-        console.warn(`La cita con nombre ${place.nombre} no tiene una fecha y hora válida.`);
       }
     });
   }

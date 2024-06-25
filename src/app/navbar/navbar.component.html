@@ -16,6 +16,16 @@
       <li class="navbar__item">
         <a [routerLink]="['/formulario']" class="navbar__link"><i class="fas fa-calendar-plus"></i><span>Registrar Reservación</span></a>       
       </li>
+
+      @if (isLoggedIn()) {
+        <li class="navbar__item">
+          <a [routerLink]="['/misreservaciones']" class="navbar__link">
+            <i class="fas fa-calendar-check"></i><span>Mis Reservaciones</span>
+        </a>
+        
+        </li>
+      }
+
       <li class="navbar__item">
         <a [routerLink]="['/reporte']" class="navbar__link"><i class="fas fa-file-alt"></i><span>Reporte de Reservaciones</span></a>        
       </li>
