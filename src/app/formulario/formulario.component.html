@@ -11,13 +11,13 @@
                       <td style="padding-right: 20px;">
                           <div class="form-group">
                               <label for="nombre">Nombre :</label>
-                              <input id="nombre" formControlName="nombre" />
+                              <input id="nombre" formControlName="nombre" value="{{ userName() }}" readonly/>
                           </div>
                       </td>
                       <td>
                           <div class="form-group">
                               <label for="correo">Correo:</label>
-                              <input id="correo" formControlName="correo" />
+                              <input id="correo" formControlName="correo" value="{{ userEmail() }}" readonly/>
                           </div>
                       </td>
                   </tr>

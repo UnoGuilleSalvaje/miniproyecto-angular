@@ -121,4 +121,20 @@ export class UserService {
       return '';
     }
   }
+
+  // Obtener el correo del usuario desde Firestore
+  async getUserEmail(user: User): Promise<string> {
+    try {
+      const userDoc = await getDoc(doc(this.firestore, 'users', user.uid));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        return userData?.['email'] || '';
+      }
+      return '';
+    } catch (error) {
+      console.error('Error getting user email', error);
+      return '';
+    }
+  }
+  
 }

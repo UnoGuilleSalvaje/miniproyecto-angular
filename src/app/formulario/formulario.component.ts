@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Estancia } from '../estancia';
@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe, CurrencyPipe } from '@angular/common';
 import Swal from 'sweetalert2';
 import { PlacesService } from '../services/places.service';
+import { UserService } from '../user.service';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-formulario',
@@ -24,22 +26,66 @@ export class FormularioComponent implements OnInit {
   estanciaSeleccionada: Estancia | null = null;
   estanciaSeleccionadaIndex: number | null = null;
 
+  isLoggedIn = signal(false); // Signal para el estado de autenticación
+  userName = signal(''); // Signal para el nombre del usuario
+  isAdmin = signal(false);
+  userEmail = signal(''); // Signal para el nombre del usuario
+
   constructor(
     private placesService: PlacesService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    public estanciasService: EstanciasService
+    public estanciasService: EstanciasService,
+    private userService: UserService,
+    private auth: Auth
   ) {
     // Inicializa el formulario con los campos y las validaciones requeridas
     this.formularioForm = this.fb.group({
       id: [''],
       fechaHora: ['', [Validators.required, this.validateDateTimeNotOccupied.bind(this)]],
-      nombre: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
+      nombre: ['', [Validators.pattern(/^[A-Za-z\s]+$/)]],
       telefono: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       dias: ['', [Validators.required, Validators.min(1)]],
-      correo: ['', [Validators.required, Validators.email]]
+      correo: ['', [Validators.email]],
+      personas: [''], //------------------------------------------------------------------->
+      tipoHabitacion: ['', Validators.required],
+      servicioDesayuno: [false],
+      servicioTraslado: [false],
+      servicioSpa: [false]
     });
+
+    onAuthStateChanged(this.auth, async (user) => {
+      const isLoggedIn = !!user;
+      this.isLoggedIn.set(isLoggedIn);
+
+      if (isLoggedIn && user) {
+        // Verificar si el usuario es admin
+        const admin = await this.userService.isAdmin(user);
+        this.isAdmin.set(admin);
+
+        // Obtener el nombre del usuario
+        const userName = await this.userService.getUserName(user);
+        this.userName.set(userName);
+
+        // Obtener el correo del usuario
+        const userEmail = await this.userService.getUserEmail(user);
+        this.userEmail.set(userEmail);
+
+        // Pasar los valores de userName y userEmail al formulario
+        this.formularioForm.patchValue({
+          nombre: userName,
+          correo: userEmail
+        });
+
+      } else {
+        // Resetear el estado de admin si no está autenticado
+        this.isAdmin.set(false);
+        this.userName.set('');
+        this.userEmail.set('');
+      }
+    });
+    
   }
 
   ngOnInit(): void {
@@ -105,14 +151,14 @@ export class FormularioComponent implements OnInit {
 
   async guardarReservacion() {
     const reservaKey = 'reserva_' + Date.now();
-
+  
     if (this.formularioForm.valid && this.estanciaSeleccionada) {
       const reserva = {
         ...this.formularioForm.value,
         id: reservaKey,
         estancia: this.estanciaSeleccionada
       };
-
+  
       try {
         const response = await this.placesService.addPlace(reserva);
         console.log(response);
@@ -125,6 +171,7 @@ export class FormularioComponent implements OnInit {
       Swal.fire('Error', 'El formulario no es válido o no se ha seleccionado una estancia.', 'error');
     }
   }
+  
 
   recuperarDatos(): void {
     console.log("Entré");
