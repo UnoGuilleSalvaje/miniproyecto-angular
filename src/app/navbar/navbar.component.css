@@ -1028,7 +1028,7 @@ span {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
-  animation: marquee 18s linear infinite; 
+  animation: marquee 15s linear infinite; 
 }
 
 .marq {
@@ -1043,7 +1043,6 @@ span {
         margin: 0 auto;
 
         /* Margen */
-        margin-top: 10px;
         margin-bottom: 10px;
 
         /* Margen */
@@ -1055,6 +1054,7 @@ span {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(100%); opacity: 1; }
+  80% { opacity: 0.5; }
+  100% { transform: translateX(0%); opacity: 0; }
 }
