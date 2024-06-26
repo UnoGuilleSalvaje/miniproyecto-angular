@@ -89,9 +89,9 @@
   }
   .card .row .form-group label {
     line-height: 40px;
-    color: #423e3e; /*labels*/
+    color: #d4d4d4; /*labels*/
     font-size: 24px;
-    margin: 0 0 0 30px;
+    margin: 0 10px 0 0;
     display: block;
     pointer-events: none;
   }
