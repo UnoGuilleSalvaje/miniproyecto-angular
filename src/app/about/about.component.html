@@ -94,53 +94,68 @@
         </div>
 
         <!-- Formulario -->
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <div>
-            <label for="name">Nombre:</label>
-            <input id="name" formControlName="name">
-            <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-              Nombre es requerido.
+        <div class="card">
+          <h2>Envíanos tus dudas o comentarios!</h2>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col">
+                  <label for="name">Nombre:</label>
+                  <input id="name" formControlName="name">
+                  <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                    El nombre es requerido.
+                  </div>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label for="email">Email:</label>
-            <input id="email" formControlName="email">
-            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-              Email es requerido y debe ser válido.
+            <div class="col">
+              <label for="email">Email:</label>
+              <input id="email" formControlName="email">
+              <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                Email es requerido y debe ser válido.
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label for="message">Mensaje:</label>
-            <textarea id="message" formControlName="message"></textarea>
-            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-              Mensaje es requerido.
+            <div class="col">
+              <label for="message">Mensaje:</label>
+              <textarea id="message" formControlName="message"></textarea>
+              <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                Mensaje es requerido.
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label for="gender">Género:</label>
-            <select id="gender" formControlName="gender">
-              <option value="">Seleccione...</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Femenino">Femenino</option>
-            </select>
-            <div *ngIf="contactForm.get('gender')?.invalid && contactForm.get('gender')?.touched">
-              Género es requerido.
+            <div class="col">
+              <label for="gender">Género:</label>
+              <select id="gender" formControlName="gender">
+                <option value="">Seleccione...</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+              </select>
+              <div *ngIf="contactForm.get('gender')?.invalid && contactForm.get('gender')?.touched">
+                Género es requerido.
+              </div>
             </div>
-          </div>
 
-          <label>
-            <input type="checkbox" formControlName="terms" />
-            Acepto los términos y condiciones
-          </label>
-          <div *ngIf="contactForm.get('terms')?.invalid && contactForm.get('terms')?.touched">
-            Debes aceptar los términos y condiciones
-          </div>
+            <div class="col">
+              <label>
+                <input type="checkbox" formControlName="terms" />
+                Acepto los términos y condiciones
+              </label>
+              <div *ngIf="contactForm.get('terms')?.invalid && contactForm.get('terms')?.touched">
+                Debes aceptar los términos y condiciones
+              </div>
+            </div>
 
-          <button type="submit" [disabled]="isSubmitting">Enviar</button>
-        </form>
+            <div class="col">
+              <a type="submit" class="subscribe-link" [ngClass]="{ 'disabled-link': isSubmitting }">
+                <span></span><span></span>
+                <span></span><span></span>
+                <span role="status" aria-hidden="true"></span>
+                Enviar
+              </a>
+            </div>
+
+          </form>
+        </div>
 
 
     </div>
