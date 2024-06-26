@@ -96,11 +96,8 @@
     pointer-events: none;
   }
   .card .row .form-group input {
-    position: absolute;
-    background: transparent;
     outline: none;
     font-size: 20px;
-    padding: 10px 0 10px 20px;
     border: 5px solid rgba(0, 0, 0, 0.3);
     box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
     color: #474040;
