@@ -120,7 +120,7 @@
     padding: 5px;
     margin-left: 10px;
   }
-  
+
   .card .row .form-group select {
     outline: none;
     font-size: 20px;
@@ -178,7 +178,7 @@
 /* BOTÓN */
 
 button {
-  padding: 4px 5px 10px;
+  padding: 20px 5px 10px;
   color: #03e9f4;
   text-decoration: none;
   text-transform: uppercase;
