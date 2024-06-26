@@ -43,6 +43,10 @@ export class AboutComponent {
         Swal.fire('Enviado', 'Tu mensaje ha sido enviado', 'success');
         this.contactForm.reset();
         this.isSubmitting = false;
+      },
+      error => {
+        Swal.fire('Error', 'Hubo un problema al enviar el mensaje', 'error');
+        this.isSubmitting = false;
       }
     );
   }
