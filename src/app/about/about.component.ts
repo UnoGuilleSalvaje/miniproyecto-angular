@@ -25,7 +25,7 @@ export class AboutComponent {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
-      options: ['', Validators.required],
+      gender: ['', Validators.required],
       terms: [false, Validators.requiredTrue]
     });
   }
