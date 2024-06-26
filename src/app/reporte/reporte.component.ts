@@ -3,11 +3,13 @@ import { PlacesService } from '../services/places.service';
 import Place from '../interfaces/place.interface';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { UserService } from '../user.service';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { PersonalizadoPipe } from '../personalizado.pipe';
 
 @Component({
   selector: 'app-reporte',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, DatePipe, PersonalizadoPipe],
   templateUrl: './reporte.component.html',
   styleUrl: './reporte.component.css'
 })

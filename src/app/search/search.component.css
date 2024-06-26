@@ -1,0 +1,66 @@
+/* Paleta de colores llamativa y colorida */
+:root {
+    --color-primario: #ff6b6b;
+    --color-secundario: #ffa500;
+    --color-terciario: #9b59b6;
+    --color-cuaternario: #1abc9c;
+  }
+  
+  /* Estilos generales */
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #181818;
+    text-align: center;
+  }
+  
+  /* Estilos para el HTML proporcionado */
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .alert {
+    background-color: rgb(231, 63, 63);
+    color: white;
+    border: none;
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin: 0 auto;
+    animation: pulse 2s infinite;
+  }
+  
+  .alert b {
+    color: var(--color-secundario);
+  }
+  
+  /* Efectos creativos y únicos */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .animate__animated.animate__backInLeft {
+    --animate-duration: 1s;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

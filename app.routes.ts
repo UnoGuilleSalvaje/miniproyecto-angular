@@ -17,6 +17,7 @@ import { MostrarComponent } from './src/app/mostrar/mostrar.component';
 import { MisReservacionesComponent } from './src/app/mis-reservaciones/mis-reservaciones.component';
 import { AyudaComponent } from './src/app/ayuda/ayuda.component';
 import { AccessibilityButtonComponent } from './src/app/accesibilitybutton/accesibilitybutton.component';
+import { AdminComponent } from './src/app/admin/admin.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -38,6 +39,7 @@ export const routes: Routes = [
     {path: 'ayuda', component: AyudaComponent},
 
     {path: 'accesibilidad', component: AccessibilityButtonComponent},
+    {path: 'admin', component: AdminComponent},
 
     {path: '**', redirectTo: 'inicio'}
 ];

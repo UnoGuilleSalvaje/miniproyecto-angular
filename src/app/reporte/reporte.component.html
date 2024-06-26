@@ -22,13 +22,16 @@
           @for (cita of citasAnteriores; track cita; let i = $index) {
             <tr>
               <td data-label="ID">{{ cita.id }}</td>
-              <td data-label="Fecha y Hora">{{ cita.fechaHora }}</td>
+              <!-- Pipe formato de fecha y hora -->
+              <td data-label="Fecha y Hora">{{ cita.fechaHora | date:'dd/MM/yyyy HH:mm:ss' }}</td>
               <td data-label="Nombre">{{ cita.nombre }}</td>
-              <td data-label="Teléfono">{{ cita.telefono }}</td>
+              <!-- Pipe que agrega el código de país -->
+              <td data-label="Teléfono">{{ cita.telefono | personalizado:'+52' }}</td>
               <td data-label="Correo">{{ cita.correo }}</td>
               <td data-label="Estancia">{{ cita.estancia.nombre }}</td>
               <td data-label="Días">{{ cita.dias }}</td>
-              <td data-label="Precio">{{ cita.estancia.precio }}</td>
+              <!-- Pipe formato de precio -->
+              <td data-label="Precio">{{ cita.estancia.precio | currency:'USD' }}</td>
               <td data-label="Dirección">#{{ cita.estancia.direccion }}</td>
               <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
               @if (isAdmin()) {
@@ -64,13 +67,16 @@
           @for (cita of citasFuturas; track cita; let i = $index) {
             <tr>
               <td data-label="ID">{{ cita.id }}</td>
-              <td data-label="Fecha y Hora">{{ cita.fechaHora }}</td>
+              <!-- Pipe formato de fecha y hora -->
+              <td data-label="Fecha y Hora">{{ cita.fechaHora | date:'dd/MM/yyyy HH:mm:ss' }}</td>
               <td data-label="Nombre">{{ cita.nombre }}</td>
-              <td data-label="Teléfono">{{ cita.telefono }}</td>
+              <!-- Pipe que agrega el código de país -->
+              <td data-label="Teléfono">{{ cita.telefono | personalizado:'+52' }}</td>
               <td data-label="Correo">{{ cita.correo }}</td>
               <td data-label="Estancia">{{ cita.estancia.nombre }}</td>
               <td data-label="Días">{{ cita.dias }}</td>
-              <td data-label="Precio">{{ cita.estancia.precio }}</td>
+              <!-- Pipe formato de precio -->
+              <td data-label="Precio">{{ cita.estancia.precio | currency:'USD' }}</td>
               <td data-label="Dirección">#{{ cita.estancia.direccion }}</td>
               <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
               @if (isAdmin()) {

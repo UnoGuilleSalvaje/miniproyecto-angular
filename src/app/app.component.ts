@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

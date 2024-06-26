@@ -630,3 +630,59 @@ p:hover {
     max-width: 100%;
   }
 }
+
+.btn-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-qr p {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .btn-qr p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .btn-qr p {
+    font-size: 12px;
+  }
+}
+/* Estilos del botón */
+.btn-qr {
+  background-color: var(--color-terciario);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 30px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  animation: pulse 2s infinite;
+}
+
+/* Efecto de pulso */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Efecto de hover */
+.btn-qr:hover {
+  background-color: var(--color-acento);
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}

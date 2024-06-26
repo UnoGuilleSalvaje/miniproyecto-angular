@@ -3,11 +3,14 @@ import { PlacesService } from '../services/places.service';
 import Place from '../interfaces/place.interface';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { UserService } from '../user.service';
+import { Pipe, PipeTransform } from '@angular/core';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { PersonalizadoPipe } from '../personalizado.pipe';
 
 @Component({
   selector: 'app-mis-reservaciones',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, DatePipe, PersonalizadoPipe],
   templateUrl: './mis-reservaciones.component.html',
   styleUrls: ['./mis-reservaciones.component.css']
 })
