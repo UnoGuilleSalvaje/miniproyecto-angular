@@ -1064,7 +1064,7 @@ span {
   .navbar {
     position: fixed;
     top: auto;
-    bottom: 0;
+    bottom: 20px;
     left: 0;
     right: 0;
     height: auto;
@@ -1106,3 +1106,4 @@ span {
     padding: 0 0.5rem;
   }
 }
+

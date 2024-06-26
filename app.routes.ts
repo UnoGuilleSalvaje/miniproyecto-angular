@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { RegistroComponent } from './registro/registro.component';
 import { RegisterComponent } from './src/app/register/register.component';
 import { InicioComponent } from './app/inicio/inicio.component';
 import { FormularioComponent } from './app/formulario/formulario.component';
@@ -17,6 +16,7 @@ import { MostrarComponent } from './src/app/mostrar/mostrar.component';
 
 import { MisReservacionesComponent } from './src/app/mis-reservaciones/mis-reservaciones.component';
 import { AyudaComponent } from './src/app/ayuda/ayuda.component';
+import { AccessibilityButtonComponent } from './src/app/accesibilitybutton/accesibilitybutton.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -36,6 +36,8 @@ export const routes: Routes = [
 
     {path: 'misreservaciones', component: MisReservacionesComponent},
     {path: 'ayuda', component: AyudaComponent},
+
+    {path: 'accesibilidad', component: AccessibilityButtonComponent},
 
     {path: '**', redirectTo: 'inicio'}
 ];

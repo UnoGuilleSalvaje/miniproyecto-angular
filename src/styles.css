@@ -1,3 +1,32 @@
 body {
     background-color: #171717;
 }
+
+/* styles.css */
+.high-contrast {
+  background-color: #000; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+}
+
+/* Asegúrate de que todos los elementos relevantes también sean afectados */
+.high-contrast h1, 
+.high-contrast h2, 
+.high-contrast h3, 
+.high-contrast h4, 
+.high-contrast h5, 
+.high-contrast h6 {
+  color: #fff;
+}
+
+.high-contrast p {
+  color: #fff;
+}
+
+.high-contrast a {
+  color: #00f; /* Azul para enlaces */
+}
+
+.high-contrast button {
+  background-color: #333; /* Botones con fondo gris oscuro */
+  color: #fff;
+}

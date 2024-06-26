@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import {} from '@angular/common/http'; // Importa HttpClientModule
-import { AccessibilityButtonComponent } from './accesibilitybutton/accesibilitybutton.component';
+import { AccessibilityButtonComponent } from './src/app/accesibilitybutton/accesibilitybutton.component';
 
 
 @Component({

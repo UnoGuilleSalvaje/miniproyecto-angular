@@ -2,13 +2,15 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../user.service';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
+import { AccessibilityButtonComponent } from "../accesibilitybutton/accesibilitybutton.component";
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [RouterModule],
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'] // styleUrl -> styleUrls
+    selector: 'app-navbar',
+    standalone: true,
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css'] // styleUrl -> styleUrls
+    ,
+    imports: [RouterModule, AccessibilityButtonComponent]
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn = signal(false); // Signal para el estado de autenticación
