@@ -146,12 +146,12 @@
             </div>
 
             <div class="col">
-              <a type="button" class="subscribe-link" [ngClass]="{ 'disabled-link': isSubmitting }">
+              <button type="button" class="subscribe-link" [disabled]="isSubmitting">
                 <span></span><span></span>
                 <span></span><span></span>
                 <span role="status" aria-hidden="true"></span>
                 Enviar
-              </a>
+              </button>
             </div>
 
           </form>
