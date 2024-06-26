@@ -102,6 +102,9 @@
     box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
     color: #474040;
     border-radius: 50px;
+
+    padding: 15px; 
+    margin-left: 10px;
   }
   .card .row .form-group textarea, select {
     outline: none;
@@ -110,6 +113,9 @@
     box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
     color: #474040;
     border-radius: 50px;
+
+    padding: 15px; 
+    margin-left: 10px;
   }
 
   /* Estilos para la tarjeta */
