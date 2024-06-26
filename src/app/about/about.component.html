@@ -130,7 +130,15 @@
               Género es requerido.
             </div>
           </div>
-        
+          
+          <label>
+            <input type="checkbox" formControlName="terms" />
+            Acepto los términos y condiciones
+          </label>
+          <div *ngIf="contactForm.get('terms')?.invalid && contactForm.get('terms')?.touched">
+            Debes aceptar los términos y condiciones
+          </div>
+
           <button type="submit" [disabled]="isSubmitting">Enviar</button>
         </form>
         
