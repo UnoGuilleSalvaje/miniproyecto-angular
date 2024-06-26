@@ -102,7 +102,7 @@
               Nombre es requerido.
             </div>
           </div>
-        
+
           <div>
             <label for="email">Email:</label>
             <input id="email" formControlName="email">
@@ -110,7 +110,7 @@
               Email es requerido y debe ser válido.
             </div>
           </div>
-        
+
           <div>
             <label for="message">Mensaje:</label>
             <textarea id="message" formControlName="message"></textarea>
@@ -118,19 +118,19 @@
               Mensaje es requerido.
             </div>
           </div>
-        
+
           <div>
             <label for="gender">Género:</label>
             <select id="gender" formControlName="gender">
               <option value="">Seleccione...</option>
-              <option value="male">Masculino</option>
-              <option value="female">Femenino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
             </select>
             <div *ngIf="contactForm.get('gender')?.invalid && contactForm.get('gender')?.touched">
               Género es requerido.
             </div>
           </div>
-          
+
           <label>
             <input type="checkbox" formControlName="terms" />
             Acepto los términos y condiciones
@@ -141,7 +141,7 @@
 
           <button type="submit" [disabled]="isSubmitting">Enviar</button>
         </form>
-        
+
 
     </div>
 
