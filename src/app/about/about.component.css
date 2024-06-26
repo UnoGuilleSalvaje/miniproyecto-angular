@@ -113,10 +113,18 @@
   }
   .card .row .form-group checkbox {
     font-size: 20px;
-    border: 5px solid rgba(0, 0, 0, 0.3);
-    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
-    color: #474040;
-    border-radius: 50px;
+    width: 20px; /* Ancho del checkbox */
+    height: 20px; /* Altura del checkbox */
+    border-radius: 4px; /* Radio de las esquinas */
+    -webkit-appearance: none; /* Eliminar la apariencia nativa */
+    -moz-appearance: none; /* Eliminar la apariencia nativa */
+    appearance: none; /* Eliminar la apariencia nativa */
+    border: 1px solid #ccc; /* Borde del checkbox */
+    outline: none; /* Eliminar el contorno al enfocar */
+  }
+  input[type="checkbox"]:checked {
+    background-color: #2196F3; /* Color de fondo cuando está seleccionado */
+    border-color: #2196F3; /* Color del borde cuando está seleccionado */
   }
 
   /* Estilos para la tarjeta */
