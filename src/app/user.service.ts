@@ -14,7 +14,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserService {
   private reCaptchaVerifier: RecaptchaVerifier | undefined;
   private confirmationResult: ConfirmationResult | undefined;
-  private apiUrl = 'http://localhost:3001/api/users'; // URL de la API del servidor
+  private apiUrl = 'http://localhost:3000/api/user-count';
   private authState = new BehaviorSubject<boolean>(false);
 
   constructor(private auth: Auth, private firestore: Firestore, private http: HttpClient) {
@@ -30,6 +30,10 @@ export class UserService {
 
   getAllUsers(): Observable<any> {
     return this.http.get<any[]>(this.apiUrl);
+  }
+
+  getUserCount(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
   }
 
   async register({ nombre, usuario, email, password }: any) {
