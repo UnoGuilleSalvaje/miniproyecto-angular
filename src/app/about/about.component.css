@@ -107,16 +107,6 @@
     padding: 15px;
     margin-left: 10px;
   }
-  .card .row .form-group select {
-    outline: none;
-    font-size: 20px;
-    border: 5px solid rgba(0, 0, 0, 0.3);
-    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
-    color: #474040;
-    border-radius: 50px;
-
-    height: 50px;
-  }
   .card .row .form-group textarea {
     outline: none;
     font-size: 20px;
@@ -126,11 +116,22 @@
     border-radius: 50px;
 
     height: 50px;
-    width: 200px;
+    width: 800px;
     padding: 5px;
     margin-left: 10px;
   }
+  
+  .card .row .form-group select {
+    outline: none;
+    font-size: 20px;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+    color: #474040;
+    border-radius: 50px;
 
+    height: 50px;
+    padding: 10px 0px 50px 0px;
+  }
   /* Estilos para la tarjeta */
   .card {
     background-color: rgba(221, 221, 221, 0.274);
