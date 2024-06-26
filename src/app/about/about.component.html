@@ -93,6 +93,55 @@
 
         </div>
 
+        <!-- Formulario -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div>
+            <label for="name">Nombre</label>
+            <input id="name" formControlName="name" type="text" />
+            <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+              Nombre es requerido
+            </div>
+          </div>
+          <div>
+            <label for="email">Correo</label>
+            <input id="email" formControlName="email" type="email" />
+            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+              Correo no es válido
+            </div>
+          </div>
+          <div>
+            <label for="message">Mensaje</label>
+            <textarea id="message" formControlName="message"></textarea>
+            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+              Mensaje es requerido
+            </div>
+          </div>
+          <div>
+            <label for="options">Opciones</label>
+            <select id="options" formControlName="options">
+              <option value="">Selecciona una opción</option>
+              <option value="option1">Opción 1</option>
+              <option value="option2">Opción 2</option>
+            </select>
+            <div *ngIf="contactForm.get('options')?.invalid && contactForm.get('options')?.touched">
+              Selecciona una opción
+            </div>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox" formControlName="terms" />
+              Acepto los términos y condiciones
+            </label>
+            <div *ngIf="contactForm.get('terms')?.invalid && contactForm.get('terms')?.touched">
+              Debes aceptar los términos y condiciones
+            </div>
+          </div>
+          <button type="submit" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Enviando...' : 'Enviar' }}
+          </button>
+        </form>
+
+
     </div>
 
   </body>
