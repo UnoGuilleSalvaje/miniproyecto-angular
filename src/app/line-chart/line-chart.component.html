@@ -1,0 +1,36 @@
+<body style="background-color: #171717 ;">
+  <div class="wrapper">
+    <br><br><br>
+    <header>
+      <h1>Modo Administrador</h1>
+      <h2 style="text-align: center;">Graficas de ventas</h2>
+    </header>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <div class="countries" style="background-color: #171717;">
+      <nav class="navbar contenedor">
+        <ul class="nav-list contenedor">
+          
+          <li>
+             <a href="#"  [routerLink]="['/line-chart']">Grafica de linea</a> 
+          </li>
+          <li><a href="#" [routerLink]="['/admin']">Grafica de barras</a></li>
+          <li>
+              <a href="#" [routerLink]="['/pie-chart']">Grafica de pastel</a></li>
+        </ul>
+      </nav>
+    
+    </div>
+    <br><br>
+    <div style="margin-top: 0;">
+    <div class="contenedor">
+      <div class="item" style="color: white;"> 
+        
+<div style="width: 100%; max-width: 600px; height: 400px;">
+  <canvas id="chart">{{ chart }}</canvas>
+</div>
+    </div>
+  
+<img  src="../../assets/img/HD-wallpaper-australia-classy-globe-map-space-world-thumbnail.jpg" width="350" height="450" >
+</div>
+
+

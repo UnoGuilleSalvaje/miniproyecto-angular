@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CommonModule } from '@angular/common';
+// import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 
@@ -16,4 +17,6 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
 
 export class AppComponent {
   title = 'StayInn';
+
+  constructor( ) {}
 }
