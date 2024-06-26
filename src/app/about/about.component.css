@@ -111,16 +111,6 @@
     color: #474040;
     border-radius: 50px;
   }
-  .card .row .cb  input[type="checkbox"] {
-    padding: 10px 80px 60px 90px;
-    font-size: 10px;
-    padding: 50px 0 10px 20px;
-    width: 20px; /* Ancho del checkbox */
-    height: 20px; /* Altura del checkbox */
-    border-radius: 4px; /* Radio de las esquinas */
-    border: 1px solid #ccc; /* Borde del checkbox */
-    outline: none; /* Eliminar el contorno al enfocar */
-  }
 
   /* Estilos para la tarjeta */
   .card {
