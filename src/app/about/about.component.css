@@ -135,7 +135,7 @@
     line-height: 40px;
     color: #423e3e; /*labels*/
     font-size: 24px;
-    margin: 0 0 0 30px;
+    margin: 0 0 0 3px;
     display: block;
     pointer-events: none;
   }
