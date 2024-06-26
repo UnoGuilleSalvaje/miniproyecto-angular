@@ -130,7 +130,7 @@
     border-radius: 50px;
 
     height: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   /* Estilos para la tarjeta */
   .card {
@@ -178,7 +178,7 @@
 /* BOTÓN */
 
 button {
-  padding: 4px 5px;
+  padding: 4px 5px 10px;
   color: #03e9f4;
   text-decoration: none;
   text-transform: uppercase;
