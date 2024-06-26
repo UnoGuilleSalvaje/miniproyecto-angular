@@ -100,7 +100,7 @@
             <div class="row">
                 <div class="col">
                   <div class="form-group">
-                    <label for="name">Nombre:</label>
+                    <label for="name">Nombre</label>
                     <input id="name" formControlName="name">
                     <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
                       El nombre es requerido.
@@ -112,7 +112,7 @@
             <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="email">Email</label>
                 <input id="email" formControlName="email">
                 <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
                   Email es requerido y debe ser válido.
@@ -124,7 +124,7 @@
             <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="message">Mensaje:</label>
+                <label for="message">Mensaje</label>
                 <textarea id="message" formControlName="message"></textarea>
                 <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
                   Mensaje es requerido.
@@ -136,7 +136,7 @@
             <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="gender">Género:</label>
+                <label for="gender">Género</label>
                 <select id="gender" formControlName="gender">
                   <option value="">Seleccione...</option>
                   <option value="Masculino">Masculino</option>
