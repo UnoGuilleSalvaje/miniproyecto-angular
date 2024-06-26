@@ -132,6 +132,11 @@
     height: 50px;
     margin-bottom: 30px;
   }
+
+  .color {
+    color: red;
+  }
+
   /* Estilos para la tarjeta */
   .card {
     background-color: rgba(221, 221, 221, 0.274);

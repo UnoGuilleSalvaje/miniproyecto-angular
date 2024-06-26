@@ -102,7 +102,7 @@
                   <div class="form-group">
                     <label for="name">Nombre</label>
                     <input id="name" formControlName="name">
-                    <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                    <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="color">
                       El nombre es requerido.
                     </div>
                   </div>
