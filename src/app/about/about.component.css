@@ -111,16 +111,19 @@
     color: #474040;
     border-radius: 50px;
   }
-  .card .row .cb input {
-    font-size: 1000px;
-    padding: 50px 0 10px 20px;
+  .card .row .cb label {
+    display: flex; /* Utilizar flexbox para alinear elementos */
+    align-items: center; /* Alinear verticalmente los elementos */
+  }
+  
+  .card .row .cb input[type="checkbox"] {
+    margin-right: 10px; /* Espacio a la derecha del checkbox */
     width: 20px; /* Ancho del checkbox */
     height: 20px; /* Altura del checkbox */
     border-radius: 4px; /* Radio de las esquinas */
     border: 1px solid #ccc; /* Borde del checkbox */
     outline: none; /* Eliminar el contorno al enfocar */
   }
-
   /* Estilos para la tarjeta */
   .card {
     background-color: rgba(221, 221, 221, 0.274);
