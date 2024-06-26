@@ -134,7 +134,9 @@
   }
 
   .color {
-    color: red;
+    color: rgb(236, 96, 96);
+    font-size: 25px;
+    align-items: self-end;
   }
 
   /* Estilos para la tarjeta */
