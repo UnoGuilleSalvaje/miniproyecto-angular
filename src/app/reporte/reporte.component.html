@@ -31,7 +31,9 @@
               <td data-label="Precio">{{ cita.estancia.precio }}</td>
               <td data-label="Dirección">#{{ cita.estancia.direccion }}</td>
               <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
+              @if (isAdmin()) {
               <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+              }
             </tr>
           }
         </tbody>
@@ -71,7 +73,9 @@
               <td data-label="Precio">{{ cita.estancia.precio }}</td>
               <td data-label="Dirección">#{{ cita.estancia.direccion }}</td>
               <td><img [src]="cita.estancia.imagen" alt="Imagen de la estancia" width="80" height="80"></td>
-              <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+              @if (isAdmin()) {
+                <td><button (click)="borrarCita(cita)" title="Borrar cita"> <i class="fas fa-trash-alt"></i> </button></td>
+                }
             </tr>
           }
         </tbody>
