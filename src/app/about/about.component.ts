@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
+
 export class AboutComponent {
   contactForm: FormGroup;
   isSubmitting: boolean = false;
@@ -38,7 +39,7 @@ export class AboutComponent {
 
     this.isSubmitting = true;
     this.http.post('http://localhost:3001/send-email', this.contactForm.value).subscribe(
-      response => {
+      () => {
         Swal.fire('Enviado', 'Tu mensaje ha sido enviado', 'success');
         this.contactForm.reset();
         this.isSubmitting = false;
