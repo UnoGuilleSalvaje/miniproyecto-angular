@@ -112,6 +112,7 @@
     border-radius: 50px;
   }
   .card .row .cb  input[type="checkbox"] {
+    padding: 10px 80px 60px 90px;
     font-size: 10px;
     padding: 50px 0 10px 20px;
     width: 20px; /* Ancho del checkbox */
