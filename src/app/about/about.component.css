@@ -133,7 +133,7 @@
 
   .card .row .form-group label {
     line-height: 40px;
-    color: #423e3e; /*labels*/
+    color: #f0eeee; /*labels*/
     font-size: 24px;
     margin: 0 0 0 3px;
     display: block;
@@ -176,36 +176,10 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-    color: white;
-  }
-
-  .card h2 {
-    text-align: center;
     margin-bottom: 20px;
     color: white;
   }
 
-  .form-group {
-    margin-bottom: 20px;
-    color: white;
-  }
-
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: white;
-  }
-
-  .form-group input {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid #636363;
-    border-radius: 5px;
-    background-color: #171717;
-    color: white;
-  }
 
   .subscribe-link {
     display: inline-block;
