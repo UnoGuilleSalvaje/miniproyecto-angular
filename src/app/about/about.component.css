@@ -111,8 +111,8 @@
     color: #474040;
     border-radius: 50px;
   }
-  .card .row .cb checkbox {
-    font-size: 50px;
+  .card .row .cb input {
+    font-size: 1000px;
     padding: 10px 0 10px 20px;
     width: 20px; /* Ancho del checkbox */
     height: 20px; /* Altura del checkbox */
