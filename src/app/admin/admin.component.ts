@@ -21,10 +21,15 @@ export class AdminComponent implements OnInit, AfterViewInit {
   topEstancias: { nombre: string; count: number }[] = [];
   private userAnimationFrameId: number = 0;
   private revenueAnimationFrameId: number = 0;
+  emails: string[] = [];
 
   constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.userService.getAllUserEmails().subscribe(data => {
+      this.emails = data.emails;
+    });
+
     this.userService.getUserCount().subscribe((response) => {
       this.userCount = response.userCount;
       this.updateUserChart();

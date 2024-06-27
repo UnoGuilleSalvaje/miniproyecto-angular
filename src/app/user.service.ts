@@ -29,6 +29,10 @@ export class UserService {
     return this.authState.asObservable();
   }
 
+  getAllUserEmails(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user-emails`);
+  }
+
   getAllUsers(): Observable<any> {
     return this.http.get<any[]>(this.apiUrl);
   }
