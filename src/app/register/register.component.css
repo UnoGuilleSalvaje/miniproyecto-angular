@@ -164,3 +164,93 @@ hr {
         padding: 20px;
     }
 }
+
+/* Clase para personalizar el contenedor del SweetAlert */
+.swal2-elegant-popup {
+    background-color: rgba(23, 23, 23, 0.9);
+    border: 1px solid #636363;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* Efecto translúcido */
+    padding: 20px;
+  }
+  
+  /* Clase para personalizar el título */
+  .swal2-elegant-title {
+    font-family: 'Georgia', serif;
+    font-size: 26px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  /* Clase para personalizar el contenido */
+  .swal2-elegant-content {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: #e0e0e0;
+  }
+  
+  /* Clase para personalizar el ícono */
+  .swal2-elegant-icon {
+    color: #565656;
+    font-size: 3rem;
+  }
+  
+  /* Clase para personalizar el botón de confirmación */
+  .swal2-elegant-confirm-button {
+    background-color: #636363;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave para el hover */
+  }
+  
+  /* Efecto hover para el botón */
+  .swal2-elegant-confirm-button:hover {
+    background-color: #171717;
+    transform: scale(1.05); /* Efecto de agrandar */
+  }
+  
+  /* Efecto active para el botón */
+  .swal2-elegant-confirm-button:active {
+    background-color: #565656;
+    transform: scale(0.95); /* Efecto de presionar */
+  }
+  
+  /* Ajustes para centrar el contenido */
+  .swal2-elegant-popup .swal2-content {
+    text-align: center;
+  }
+  
+  /* Ajustes para que el ícono esté centrado */
+  .swal2-elegant-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ /* Clase para personalizar el botón de confirmación rojo */
+.swal2-confirm-button-red.swal2-styled.swal2-confirm {
+    background-color: #dc3545 !important; /* Rojo */
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 10px 20px !important;
+    font-size: 16px !important;
+    transition: background-color 0.3s, transform 0.3s !important; /* Transición suave para el hover */
+  }
+  
+  /* Efecto hover para el botón rojo */
+  .swal2-confirm-button-red.swal2-styled.swal2-confirm:hover {
+    background-color: #c82333 !important;
+    transform: scale(1.05) !important; /* Efecto de agrandar */
+  }
+  
+  /* Efecto active para el botón rojo */
+  .swal2-confirm-button-red.swal2-styled.swal2-confirm:active {
+    background-color: #bd2130 !important;
+    transform: scale(0.95) !important; /* Efecto de presionar */
+  }
+  
