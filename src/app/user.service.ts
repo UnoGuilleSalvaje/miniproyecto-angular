@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  signOut, RecaptchaVerifier, signInWithPhoneNumber,
+  signOut, signInWithPhoneNumber,
   ConfirmationResult, User, onAuthStateChanged
 } from '@angular/fire/auth';
 import { Firestore, collection, collectionData, addDoc, doc, setDoc, getDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { RecaptchaVerifier } from 'firebase/auth'; // Correcto
 
 @Injectable({
   providedIn: 'root'
