@@ -15,6 +15,7 @@ export class UserService {
   private reCaptchaVerifier: RecaptchaVerifier | undefined;
   private confirmationResult: ConfirmationResult | undefined;
   private apiUrl = 'http://localhost:3000/api/user-count';
+  private baseUrl = 'http://localhost:3000/api';
   private authState = new BehaviorSubject<boolean>(false);
 
   constructor(private auth: Auth, private firestore: Firestore, private http: HttpClient) {
@@ -34,6 +35,14 @@ export class UserService {
 
   getUserCount(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
+  }
+
+  getTotalRevenue(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/total-revenue`);
+  }
+
+  getTopEstancias(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/top-estancias`);
   }
 
   async register({ nombre, usuario, email, password }: any) {
