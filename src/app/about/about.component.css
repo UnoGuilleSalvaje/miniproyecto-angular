@@ -2,28 +2,28 @@
     max-width: 400px;
     margin: 0 auto;
   }
-  
+
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-  
+
   body {
     background: #171717;
     font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
     text-align: center;
   }
-  
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   h1 {
   
     color: #fff;
@@ -40,19 +40,19 @@
   p {
     color:rgb(95, 94, 94);
   }
-  
+
   .wrapper {
     width: 90%;
     margin: 0 auto;
     max-width: 80rem;
   }
-  
+
   .cards {
     display: flex;
     flex-wrap: wrap; /* Permite que las tarjetas se envuelvan cuando no quepan en una sola fila */
     justify-content: space-between;
     align-items: flex-start;
-  
+
     width: 90%;
     margin: 0 auto;
     max-width: 80rem;
@@ -61,7 +61,7 @@
     width: calc(50% - 10px); /* Haz que las tarjetas ocupen el 50% del ancho de su contenedor, con un espacio entre ellas */
     margin-bottom: 20px; /* Agrega un espacio entre las tarjetas */
   }
-  
+
   @media (min-width: 768px) {
     .example-card {
       width: calc(33.33% - 10px);
@@ -76,4 +76,215 @@
   mat-card-title {
     color: white;
   }
-  
+
+  /* Estilo del formulario */
+  .card {
+    width: 60%;
+    padding: 10px 80px 60px 90px;
+    border: 6px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    position: relative;
+
+    margin: 0 auto;
+  }
+  .card .row .form-group label {
+    line-height: 40px;
+    color: #d4d4d4; /*labels*/
+    font-size: 24px;
+    margin: 0 10px 0 0;
+    display: block;
+    pointer-events: none;
+  }
+  .card .row .form-group input {
+    outline: none;
+    font-size: 20px;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+    color: #474040;
+    border-radius: 50px;
+
+    height: 20px;
+    padding: 15px;
+    margin-left: 10px;
+  }
+  .card .row .form-group textarea {
+    outline: none;
+    font-size: 20px;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+    color: #474040;
+    border-radius: 50px;
+
+    height: 50px;
+    width: 400px;
+    padding: 5px;
+    margin-left: 10px;
+  }
+
+  .card .row .form-group select {
+    outline: none;
+    font-size: 20px;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+    color: #474040;
+    border-radius: 50px;
+
+    height: 50px;
+    margin-bottom: 30px;
+  }
+
+  .color {
+    padding: 5px;
+    color: rgb(22, 251, 255);
+    font-size: 25px;
+  }
+
+  /* Estilos para la tarjeta */
+  .card {
+    background-color: rgba(221, 221, 221, 0.274);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    color: white;
+  }
+
+
+  .subscribe-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #565656;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .subscribe-link:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
+
+  .subscribe-link:hover:before {
+    transform: translateX(0);
+  }
+
+  .subscribe-link:active {
+    transform: scale(0.95);
+  }
+
+/* BOTÓN */
+
+button {
+  padding: 4px 5px 10px;
+  color: #03e9f4;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  margin-right: 50px;
+
+  /* Centrado horizontal */
+  display: block;
+  margin: 0 auto;
+}
+
+
+button:hover{
+  background: #03e9f4;
+  color: #ffffff;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 200px #03e9f4;
+   -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}
+button:nth-child(1){
+  filter: hue-rotate(270deg);
+}
+button:nth-child(2){
+  filter: hue-rotate(110deg);
+}
+button span{
+  position: absolute;
+  display: block;
+}
+button span:nth-child(1){
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#03e9f4);
+  animation: animate1 1s linear infinite;
+}
+@keyframes animate1{
+  0%{
+      left: -100%;
+  }
+  50%,100%{
+      left: 100%;
+  }
+}
+button span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#03e9f4);
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2{
+  0%{
+      top: -100%;
+  }
+  50%,100%{
+      top: 100%;
+  }
+}
+button span:nth-child(3){
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#03e9f4);
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.50s;
+}
+@keyframes animate3{
+  0%{
+      right: -100%;
+  }
+  50%,100%{
+      right: 100%;
+  }
+}
+
+button span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#03e9f4);
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4{
+  0%{
+      bottom: -100%;
+  }
+  50%,100%{
+      bottom: 100%;
+  }
+}

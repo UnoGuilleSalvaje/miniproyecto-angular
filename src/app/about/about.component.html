@@ -5,22 +5,24 @@
       <h3>Tecnologías web</h3>
       <p>Ingeniería en sistemas computacionales</p>
       <p>3B</p>
-  
+
       <p [ngStyle]="{'padding': '0px 50px 5px 90px'}">Este proyecto de reservación de estancias es parte de un trabajo académico
         desarrollado por estudiantes de la Universidad Autónoma de Aguascalientes (UAA).
         <br>
         No está destinado para uso comercial.</p>
-  
+
       <br><br>
-  
+
       <div class="cards">
-  
+
         <mat-card class="example-card">
             <mat-card-header>
+
               <img mat-card-avatar mat-card-avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzy9HHmC_Wq7A5EVTo7h5bOuVOVkVsj4r_5g&s" >
               <mat-card-title>Arely Zuleika Espino Dávalos</mat-card-title>
             </mat-card-header>
             <img mat-card-image src="https://github.com/UnoGuilleSalvaje/proyectofinal-angular/blob/main/src/assets/img/arely.jpeg?raw=true" class="imgcard img">
+
             <mat-card-content>
               <p>
                 Estudiante de la UAA
@@ -29,13 +31,15 @@
               </p>
             </mat-card-content>
           </mat-card>
-  
+
           <mat-card class="example-card">
             <mat-card-header>
+
               <img mat-card-avatar mat-card-avatar src="https://i.pinimg.com/564x/da/94/5b/da945b1be7e1ec7bd1f4cb6cd6c9ceb1.jpg" >
               <mat-card-title>Vania Nayeli Pérez Ortíz</mat-card-title>
             </mat-card-header>
             <img mat-card-image src="https://github.com/UnoGuilleSalvaje/proyectofinal-angular/blob/main/src/assets/img/vania.jpg?raw=true" class="img">
+
             <mat-card-content>
               <p>
                 Estudiante de la UAA
@@ -44,9 +48,10 @@
               </p>
             </mat-card-content>
           </mat-card>
-  
+
           <mat-card class="example-card">
             <mat-card-header>
+
               <img mat-card-avatar mat-card-avatar src="https://pbs.twimg.com/media/FyrPUIjWcAALdAG.png" >
               <mat-card-title>Guillermo Alfonso Castañeda Hernández</mat-card-title>
             </mat-card-header>
@@ -54,17 +59,20 @@
             <mat-card-content>
               <p>
                 Estudiante de la UAA <br>
+
                 <mat-icon> email</mat-icon>al335638<mat-icon>alternate_email</mat-icon>edu.com.mx
               </p>
             </mat-card-content>
           </mat-card>
-  
+
           <mat-card class="example-card">
             <mat-card-header>
+
               <img mat-card-avatar mat-card-avatar src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/75e94c2004605.560de9d8221e8.jpg" >
               <mat-card-title>Axel Arturo Paredes Huerta</mat-card-title>
             </mat-card-header>
             <img mat-card-image src="https://github.com/UnoGuilleSalvaje/proyectofinal-angular/blob/main/src/assets/img/axel.jpg?raw=true" class="img">
+
             <mat-card-content>
               <p>
                 Estudiante de la UAA
@@ -73,13 +81,15 @@
               </p>
             </mat-card-content>
           </mat-card>
-  
+
           <mat-card class="example-card">
             <mat-card-header>
+
               <img mat-card-avatar mat-card-avatar src="https://www.infobae.com/new-resizer/3LuGox4YqSf62JLq1-Df6wRSCb0=/992x1323/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/HSDFPPX6HZGE3FP3IS7DVXS7OI.jpg" >
               <mat-card-title>Americo Ismael Calzada González</mat-card-title>
             </mat-card-header>
             <img mat-card-image src="https://github.com/UnoGuilleSalvaje/proyectofinal-angular/blob/main/src/assets/img/americo.jpg?raw=true" class="img">
+
             <mat-card-content>
               <p>
                 Estudiante de la UAA
@@ -88,10 +98,94 @@
               </p>
             </mat-card-content>
           </mat-card>
-  
+
         </div>
-  
+
+        <!-- Formulario -->
+        <div class="card">
+          <h2>Envíanos tus dudas o comentarios!</h2>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input id="name" formControlName="name">
+                    <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="color">
+                      El nombre es requerido.
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" formControlName="email">
+                <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="color">
+                  Email es requerido y debe ser válido.
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" formControlName="message"></textarea>
+                <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="color">
+                  Mensaje es requerido.
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="gender">Género</label>
+                <select id="gender" formControlName="gender">
+                  <option value="">Seleccione...</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                </select>
+                <div *ngIf="contactForm.get('gender')?.invalid && contactForm.get('gender')?.touched" class="color">
+                  Género es requerido.
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <div class="cb">
+                <label>
+                  <input type="checkbox" formControlName="terms" />
+                  Acepto los términos y condiciones
+                </label>
+                <div *ngIf="contactForm.get('terms')?.invalid && contactForm.get('terms')?.touched" class="color">
+                  Debes aceptar los términos y condiciones
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+            <div class="col">
+              <button type="submit" class="subscribe-link" [disabled]="isSubmitting">
+                <span></span><span></span>
+                <span></span><span></span>
+                <span role="status" aria-hidden="true"></span>
+                Enviar
+              </button>
+            </div>
+            </div>
+
+          </form>
+        </div>
+
+
     </div>
-  
+
   </body>
-  
