@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { PlacesService } from '../services/places.service';
 import Place from '../interfaces/place.interface';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
+import { UserService } from '../user.service';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { PersonalizadoPipe } from '../personalizado.pipe';
 
 @Component({
   selector: 'app-reporte',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, DatePipe, PersonalizadoPipe],
   templateUrl: './reporte.component.html',
   styleUrl: './reporte.component.css'
 })
@@ -13,8 +17,37 @@ export class ReporteComponent implements OnInit {
   citasAnteriores: any[] = [];
   citasFuturas: any[] = [];
 
+  isLoggedIn = signal(false); // Signal para el estado de autenticación
+  userName = signal(''); // Signal para el nombre del usuario
+  isAdmin = signal(false);
+  userEmail = signal(''); // Signal para el correo del usuario
 
-  constructor(private placesService: PlacesService) { }
+  constructor(private placesService: PlacesService, private userService: UserService, private auth: Auth) {
+    onAuthStateChanged(this.auth, async (user) => {
+      const isLoggedIn = !!user;
+      this.isLoggedIn.set(isLoggedIn);
+
+      if (isLoggedIn && user) {
+        // Verificar si el usuario es admin
+        const admin = await this.userService.isAdmin(user);
+        this.isAdmin.set(admin);
+
+        // Obtener el nombre del usuario
+        const userName = await this.userService.getUserName(user);
+        this.userName.set(userName);
+
+        // Obtener el correo del usuario
+        const userEmail = await this.userService.getUserEmail(user);
+        this.userEmail.set(userEmail);
+        
+      } else {
+        // Resetear el estado de admin si no está autenticado
+        this.isAdmin.set(false);
+        this.userName.set('');
+        this.userEmail.set('');
+      }
+    });
+  }
 
   ngOnInit(): void {
     //Firestore

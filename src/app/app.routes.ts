@@ -12,6 +12,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { MostrarComponent } from './mostrar/mostrar.component';
+import { MisReservacionesComponent } from './mis-reservaciones/mis-reservaciones.component';
+
+import { AyudaComponent } from './ayuda/ayuda.component';
+import { AccessibilityButtonComponent } from './accesibilitybutton/accesibilitybutton.component';
+
+import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -28,5 +34,11 @@ export const routes: Routes = [
     ({path: 'login', component: LoginComponent}),
     {path: 'main', component: InicioComponent},
     {path: 'mostrar', component: MostrarComponent},
+    {path: 'misreservaciones', component: MisReservacionesComponent},
+
+    {path: 'ayuda', component: AyudaComponent},
+    {path: 'accesibilidad', component: AccessibilityButtonComponent},
+
+    {path: 'admin', component: AdminComponent},
     {path: '**', redirectTo: 'inicio'}
 ];

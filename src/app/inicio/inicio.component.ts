@@ -11,6 +11,7 @@ import { FelicitarComponent } from './felicitar/felicitar.component';
 
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { QrServiceService } from '../qr-service.service';
 
 @NgModule ({
   imports: [
@@ -39,20 +40,24 @@ export class InicioComponent {
   userEmail: string = '';
   message: string = '';
 
-  @ViewChild(FelicitarComponent, { static: false }) felicitarComponent!: FelicitarComponent;
+  qrData: any;
+  qrCode!: string;
 
-  ultimasReservaciones = [
-    { id: 1, tipo: 'Reservación', fecha: '2024-05-01', cliente: 'Juan', habitacion: '101' },
-    { id: 2, tipo: 'Oferta', fecha: '2024-05-02', producto: 'Descuento en Habitaciones' },
-    { id: 3, tipo: 'Reservación', fecha: '2024-05-03', cliente: 'María', habitacion: '102' }
-  ];
+  @ViewChild(FelicitarComponent, { static: false }) felicitarComponent!: FelicitarComponent;
 
   updateEmail() {
     console.log('Email actualizado:', this.userEmail);
   }
   video: string = "QXt21aGi_nQ?si=_c61Gdel1By3kTDI";
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private qrService: QrServiceService) {}
+
+  ngOnInit() {
+    this.qrService.getQrData().subscribe((response) => {
+      this.qrData = response.data;
+      this.qrCode = response.qr;
+    });
+  }
 
   suscribir() {
     this.message = 'Gracias por suscribirte, te mandaremos un correo con las mejores ofertas. Regresando al menu principal...';

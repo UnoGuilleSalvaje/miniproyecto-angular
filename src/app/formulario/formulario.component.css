@@ -1,4 +1,5 @@
-/* registro.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans&display=swap');
+
 app-formulario {
     display: block;
     width: 100%;
@@ -11,16 +12,13 @@ app-formulario {
     animation: fadeIn 1s ease-in-out;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+:root {
+  --primary: #03e9f4;
+  --dark: #171717;
+  --light: #676767;
+  --white: #ffffff;
+  --accent: #58a5a2;
+  --secondary: #565656;
 }
 
 body {
@@ -33,163 +31,240 @@ body {
     margin: 0;
 }
 
-.display-field {
-    padding: 15px;
-    background-color: #444;
-    border-radius: 10px;
-    color: white;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.display-field:hover {
-    transform: translateY(-5px);
-}
-
 .form-container {
-    width: 100%;
-    max-width: 800px;
-    padding: 30px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  margin: 0 auto;
 }
 
 .card {
-    background-color: #2c2c2c;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    color: white;
-    margin-top: 100px;
-    text-align-last: center;
-    animation: slideIn 0.5s ease-in-out;
+  background-color: #2c2c2c;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  color: var(--white);
+  animation: slideIn 0.5s ease-in-out, fadeIn 1s ease-in-out;
 }
 
 @keyframes slideIn {
-    0% {
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.card-header,
-.card-footer {
-    text-align: center;
-    margin-bottom: 30px;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .card-header h3 {
-    color: #fff;
-    text-align: center;
-    font-size: 3rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
+  color: var(--white);
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 15px;
 }
 
 .form-group {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
+  position: relative;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 10px;
-    color: #d3d3d3;
-    font-size: 16px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+label {
+  display: block;
+  color: #d3d3d3;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background-color: #3a3a3a;
-    color: white;
-    font-size: 16px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease-in-out;
+input, select {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3a3a3a;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
-.form-group input:focus {
-    outline: none;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.button-group {
-    text-align: center;
-}
-
-.button-group button {
-    background-color: #565656;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.button-group button:hover {
-    background-color: #676767;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.error-message {
-    color: #ff6b6b;
-    font-size: 14px;
-    margin-top: 10px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 8px 16px rgba(3, 233, 244, 0.3);
+  background-color: #444;
 }
 
 .button-g {
-    padding: 15px 20px;
-    background-color: #565656;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .button-g:hover {
-    background-color: #676767;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
 }
 
 .button-g option {
-    background-color: #171717;
-    color: #FFFFFF;
+  background-color: var(--dark);
+  color: var(--white);
 }
 
 .cardd {
-    background-color: rgba(99, 99, 99, 0.7);
-    margin: 20px auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 0.5s ease-in-out;
+  background-color: rgba(99, 99, 99, 0.7);
+  border-radius: 15px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease-in-out;
 }
 
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.cardd:hover {
+  transform: translateY(-5px) rotateY(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cardd-img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.cardd-img:hover {
+  transform: scale(1.05);
+}
+
+blockquote {
+  font-size: 20px;
+  font-style: italic;
+  color: #d3d3d3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #d3d3d3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-submit {
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+}
+
+.btn-submit:hover {
+
+  background: linear-gradient(45deg, var(--accent), var(--primary));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(3, 233, 244, 0.3);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px var(--primary); }
+  50% { box-shadow: 0 0 20px var(--primary); }
+  100% { box-shadow: 0 0 5px var(--primary); }
+}
+
+.btn-submit:not(:disabled) {
+  animation: glowing 1.5s infinite;
+}
+
+/* Animación para los campos del formulario */
+@keyframes inputFocus {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+input:focus, select:focus {
+  animation: inputFocus 0.3s ease;
+}
+
+/* Efecto de hover para las filas de la tabla */
+tr:hover {
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
 .cardd-img {
@@ -211,4 +286,83 @@ p {
     font-size: 16px;
     color: #d3d3d3;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-header h3 {
+    color: #fff;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.button-group {
+    border: none;
+    border-radius: 10px;
+    background-color: #565656;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+ }
+ 
+ .button-group:hover {
+    background-color: #636363;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+ }
+ 
+ .button-group:active {
+    background-color: #565656;
+    transform: scale(0.98);
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
+ }
+
+ .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  animation: form-group-fade-in 0.5s ease-in-out;
+}
+
+@keyframes form-group-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #03e9f4;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.0);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type="radio"]:hover,
+input[type="checkbox"]:hover {
+  transform: scale(1.4);
+}
+
+.form-group label {
+  margin-right: 10px;
+}
+
+.form-group label:first-child {
+  font-weight: bold;
 }

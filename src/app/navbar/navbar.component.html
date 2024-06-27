@@ -1,11 +1,14 @@
-<marquee width="100%" direction="left">
-  <span><b>StayInn</b> - Donde cada viaje se convierte en un recuerdo especial</span>
- </marquee>
+<div class="marq" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 999;">
+  <div class="marquee">
+    <span>Bienvenido <b>{{ userName() }}</b> a <b>StayInn</b> - Donde cada viaje se convierte en un recuerdo especial</span>
+  </div>
+</div>
  
 <nav class="navbar">
     <ul class="navbar__menu">
+      
       <li class="navbar__item">
-        <a [routerLink]="['/inicio']" class="logo navbar__link"><img src="https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-1/447728541_122176549460035530_9156271267126335133_n.jpg?stp=dst-jpg_p200x200&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ynBUATubRloQ7kNvgGXBrUj&_nc_ht=scontent.fagu3-1.fna&oh=00_AYBiOZDAKmP8zcwqufs7EoNl-aRlgc0p9uVHIfsS2tz1-Q&oe=66658F64" width="40px" alt="StayInn" class="logo"><span>StayInn</span></a>
+        <a [routerLink]="['/inicio']" class="logo navbar__link"><img src="https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/447728541_122176549460035530_9156271267126335133_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=1ZpKYaTfTiAQ7kNvgH036Hz&_nc_ht=scontent.fagu3-1.fna&oh=00_AYBwjHyNiALoyIUAGv7h91ViLOCJNmCRMJ-ipu1gzoWV6A&oe=667D3E87" width="40px" alt="StayInn" class="logo"><span>StayInn</span></a>
       </li>
       <!-- <li class="navbar__item">
         <a [routerLink]="['/inicio']" class="navbar__link"><i class="fas fa-home"></i><span>Home</span></a>
@@ -13,6 +16,16 @@
       <li class="navbar__item">
         <a [routerLink]="['/formulario']" class="navbar__link"><i class="fas fa-calendar-plus"></i><span>Registrar Reservación</span></a>       
       </li>
+
+      @if (isLoggedIn()) {
+        <li class="navbar__item">
+          <a [routerLink]="['/misreservaciones']" class="navbar__link">
+            <i class="fas fa-calendar-check"></i><span>Mis Reservaciones</span>
+        </a>
+        
+        </li>
+      }
+
       <li class="navbar__item">
         <a [routerLink]="['/reporte']" class="navbar__link"><i class="fas fa-file-alt"></i><span>Reporte de Reservaciones</span></a>        
       </li>
@@ -21,6 +34,9 @@
       </li>
       <li class="navbar__item">
         <a [routerLink]="['/blog']" class="navbar__link"><i class="fas fa-globe"></i><span>Blog</span></a>       
+      </li>
+      <li class="navbar__item">
+        <a [routerLink]="['/ayuda']" class="navbar__link"><i class="fas fa-question-circle"></i><span>Ayuda</span></a>        
       </li>
       <li class="navbar__item">
         <a [routerLink]="['/about']" class="navbar__link"><i class="fas fa-info-circle"></i><span>Acerca de</span></a>        
@@ -38,24 +54,42 @@
 
 
       <li class="navbar__item">
-        <a [routerLink]="['/login']" class="navbar__link">
-          <i class="fas fa-sign-in-alt"></i> <!-- Icono de login -->
+        <a [routerLink]="['/login']" class="navbar__link" style="color: rgba(165, 247, 156, 0.53)">
+          <i class="fas fa-sign-in-alt"></i>
           <span>Login</span>
         </a>
       </li>
 
+      @if (!isLoggedIn()){
       <li class="navbar__item">
-        <a [routerLink]="['/register']" class="navbar__link">
-          <i class="fas fa-user-plus"></i> <!-- Icono de registro -->
+        <a [routerLink]="['/register']" class="navbar__link" style="color: rgba(169, 244, 247, 0.53)">
+          <i class="fas fa-user-plus"></i>
           <span>Register</span>
         </a>
       </li>
+    }
+
+
+      @if (isLoggedIn()) {
+        <li class="navbar__item">
+          <a (click)="onClick()" class="navbar__link" style="color: rgba(232, 147, 147, 0.53)">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      }
+
+      @if (isAdmin()) {
+        <li class="navbar__item">
+          <a [routerLink]="['/admin']" class="navbar__link" style="color: rgba(255, 0, 0, 0.53)">
+            <i class="fas fa-user-shield"></i>
+            <span>Admin</span>
+          </a>
+        </li>
+      }
 
       <li class="navbar__item">
-        <a (click)="onClick()" class="navbar__link" style="color: rgba(255, 0, 0, 0.53)">
-          <i class="fas fa-sign-out-alt"></i> <!-- Icono de logout -->
-          <span>Logout</span>
-        </a>
+        <a class="navbar__link"><app-accesibilitybutton></app-accesibilitybutton><span>Accesibilidad</span></a>
       </li>
 
     </ul>
